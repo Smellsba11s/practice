@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import fake_useragent
 import json
+import re
 import time
 from urllib.parse import urlencode, urlunparse, urlparse
 
@@ -49,10 +50,16 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
     user_agent = fake_useragent.UserAgent()
     
     try:
+        
         response = requests.get(url, headers={'user-agent': user_agent.random})
         response.raise_for_status()  # проверка запроса
         soup = BeautifulSoup(response.content, 'lxml')
-        page_count = int(soup.find('div', class_='pager').find_all('span', recursive=False)[-1].find('a').find('span').text)
+        # Находим количество страниц результатов
+        pager = soup.find('div', class_='pager')
+        if pager:
+            page_count = int(pager.find_all('span', recursive=False)[-1].find('a').find('span').text)
+        else:
+            page_count = 1  # Если не найден блок пагинации, считаем что только одна страница
     except (requests.RequestException, ValueError, AttributeError) as e:
         print(f"Error during initial request: {e}")
         return
@@ -62,7 +69,7 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
             url = url + f'&page={page}'
             response = requests.get(url, headers={'user-agent': user_agent.random})
             response.raise_for_status()  
-            print(url)
+            #print(url)
             soup = BeautifulSoup(response.content, 'lxml')
             links = [f"https://hh.ru{a['href'].split('?')[0]}"
                      for a in soup.find_all("a", attrs={"rel": "nofollow"}) 
@@ -87,16 +94,41 @@ def get_resume(link):
         salary = soup.find(attrs={"class": "resume-block__salary"}).text.replace("\u2009", "").replace('\xa0', ' ') if soup.find(attrs={"class": "resume-block__salary"}) else ''
         tags = [tag.text for tag in soup.find(attrs={"class": "bloko-tag-list"}).find_all(attrs={"class": "bloko-tag__section_text"})] if soup.find(attrs={"class": "bloko-tag-list"}) else []
         sex = soup.find(attrs={'data-qa': 'resume-personal-gender'}).text if soup.find(attrs={'data-qa': 'resume-personal-gender'}) else ''
-        skill = soup.find(attrs={'class': 'resume-block__title-text_sub'}).text.replace('\xa0', ' ') if soup.find(attrs={'class': 'resume-block__title-text_sub'}) else ''
+        experience = soup.find(attrs={'class': 'resume-block__title-text_sub'}).text.replace('\xa0', ' ') if soup.find(attrs={'class': 'resume-block__title-text_sub'}) else ''
         age = soup.find(attrs={'data-qa': 'resume-personal-age'}).text.replace('\xa0', ' ') if soup.find(attrs={'data-qa': 'resume-personal-age'}) else ''
+        employment_text = None
+        schedule_text = None
+
+        # Ищем все <p> элементы в документе
+        all_paragraphs = soup.find_all('p')
+
+        for p in all_paragraphs:
+            if 'Занятость:' in p.text:
+                employment_text = p.text.strip().replace('Занятость: ', '')
+                break
+        if employment_text:
+            employment_list = [e.strip() for e in employment_text.split(',')]
+        else:
+            employment_list = ['Информация о занятости не найдена']
         
+        for p in all_paragraphs:
+            if 'График работы:' in p.text:
+                schedule_text = p.text.strip().replace('График работы: ', '')
+                break
+        if schedule_text:
+            schedule_list = [e.strip() for e in schedule_text.split(',')]
+        else:
+            schedule_list = ['Информация о графике работы не найдена']
+
         resume = {
             "name": name,
             "sex": sex,
             "age": age,
             "salary": salary,
-            "skill": skill,
+            "experience": experience,
             "tags": tags,
+            'employment_list':employment_list,
+            'schedule_list':schedule_list,
         }
         return resume
     except (requests.RequestException, AttributeError) as e:

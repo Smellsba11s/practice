@@ -1,453 +1,10 @@
 [
     {
-        "name": "Python Backend Developer",
-        "sex": "Мужчина",
-        "age": "31 год",
-        "salary": "",
-        "skill": "Опыт работы 2 года 5 месяцев",
-        "tags": [
-            "Python",
-            "Linux",
-            "PostgreSQL",
-            "Docker",
-            "Git",
-            "Django",
-            "Django Framework",
-            "Redis",
-            "FastAPI",
-            "sqlalchemy"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Male",
-        "age": "38 years",
-        "salary": "",
-        "skill": "Work experience 9 months",
-        "tags": [
-            "Python",
-            "SQL",
-            "Django Framework",
-            "English",
-            "PostgreSQL",
-            "FastAPI",
-            "Git",
-            "Linux",
-            "Redis",
-            "Docker",
-            "HTML",
-            "CSS",
-            "Docker-compose",
-            "Flask",
-            "Backend",
-            "REST API",
-            "Django Rest Framework",
-            "Web Application Development",
-            "Googling",
-            "Умение разбираться в чужом коде",
-            "GitHub"
-        ]
-    },
-    {
-        "name": "Python Разработчик ",
-        "sex": "Мужчина",
-        "age": "34 года",
-        "salary": "",
-        "skill": "Опыт работы 6 лет 4 месяца",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "PostgreSQL",
-            "Linux",
-            "Django Rest Framework",
-            "Git",
-            "Django"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Male",
-        "age": "24 years",
-        "salary": "",
-        "skill": "Work experience 4 years 3 months",
-        "tags": [
-            "Работоспособность",
-            "Целеустремленность",
-            "Ответственность",
-            "Работа в команде",
-            "Обучаемость",
-            "Python",
-            "Linux",
-            "Грамотная речь",
-            "SQL",
-            "Pandas",
-            "Selenium",
-            "RobotFramework"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "37 лет",
-        "salary": "",
-        "skill": "Опыт работы 12 лет 10 месяцев",
-        "tags": [
-            "Python",
-            "Django REST Framework",
-            "Django Framework",
-            "PostgreSQL",
-            "MySQL",
-            "SQLite",
-            "Unit Testing",
-            "Git",
-            "GitHub",
-            "API",
-            "Telegram API",
-            "Linux",
-            "Ubuntu Server",
-            "Nginx",
-            "Docker",
-            "Gunicorn",
-            "Postfix",
-            "Postman",
-            "PyCharm",
-            "Visual Studio Code",
-            "Navicat"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "260000 ₽ на руки",
-        "skill": "Опыт работы 8 лет 4 месяца",
-        "tags": [
-            "Ответственность",
-            "Исполнительность",
-            "JavaScript",
-            "Node.js",
-            "Python",
-            "react.js",
-            "Git",
-            "CSS",
-            "Django Framework",
-            "SQL",
-            "vue.js",
-            "Flask",
-            "PostgreSQL"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Male",
-        "age": "",
-        "salary": "",
-        "skill": "Work experience 4 years 4 months",
-        "tags": [
-            "Работоспособность",
-            "Python",
-            "Selenium IDE",
-            "Linux",
-            "MySQL",
-            "Git",
-            "SQL",
-            "C#",
-            "C++",
-            "PHP",
-            "ООП",
-            "FastAPI",
-            "Django Framework",
-            "sqlalchemy",
-            "Docker"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "29 лет",
-        "salary": "",
-        "skill": "Опыт работы 8 лет 1 месяц",
-        "tags": [
-            " Python",
-            "Flask",
-            "SQL",
-            "HTML",
-            "Django Framework",
-            "Django REST Framework",
-            " Git",
-            "SQLAlchemy",
-            "Selenium",
-            "Postman",
-            "C/C++",
-            "Алгоритмы, структуры данных",
-            "Docker",
-            "Docker-compose",
-            "Linux",
-            "FastApi",
-            "PostgreSQL",
-            "API",
-            "Golang",
-            "Django Rest Framework",
-            "FastAPI",
-            "Gitlab",
-            "CI/CD",
-            "MySQL",
-            "SOLID",
-            "ООП",
-            "Clean Architecture",
-            "Redis",
-            "REST API",
-            "Nginx"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "",
-        "skill": "Опыт работы 2 года 8 месяцев",
-        "tags": [
-            " SQL",
-            "Docker",
-            "Flask",
-            "MySQL",
-            "PostgreSQL",
-            "FastAPI",
-            "ООП",
-            "REST API",
-            "Django Rest Framework",
-            "Django Framework",
-            "Паттерны проектирования",
-            "Redis",
-            "Celery",
-            "Python",
-            " Git",
-            "RabbitMQ",
-            "SOLID"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 4 месяца",
-        "tags": [
-            "Bootstrap",
-            "Clean Architecture",
-            "SOLID",
-            "ООП",
-            "Web Application Development",
-            "C/C++",
-            "Pandas",
-            "MS SQL Server",
-            " Python",
-            "Flask",
-            "SQL",
-            "Git",
-            "Linux",
-            "PostgreSQL",
-            "FastAPI",
-            "aiohttp",
-            "ORM",
-            "Docker",
-            "Celery",
-            "Docker-compose",
-            "Redis",
-            "RabbitMQ",
-            "ClickHouse",
-            "Gitlab"
-        ]
-    },
-    {
-        "name": "Senior python developer",
-        "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "330000 ₽ на руки",
-        "skill": "Опыт работы 5 лет 6 месяцев",
-        "tags": [
-            " Python",
-            "Django Framework",
-            "REST",
-            "Linux",
-            "Asynchronous Python",
-            "Flask",
-            "Celery",
-            "PostgreSQL",
-            "Django",
-            "ООП",
-            "Redis",
-            "SQL",
-            "Django Rest Framework",
-            "FastAPI",
-            "Gitlab",
-            "GraphQL",
-            "RabbitMQ",
-            "SOLID",
-            "SQLite",
-            "Backend",
-            "API",
-            "REST API",
-            "SQLAlchemy",
-            "Docker",
-            "JSON API",
-            "Базы данных",
-            "Web Application Development"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "27 лет",
-        "salary": "350000 ₽ на руки",
-        "skill": "Опыт работы 4 года 1 месяц",
-        "tags": [
-            "Atlassian Jira",
-            "MySQL",
-            "TDD",
-            "Unit Testing",
-            "Gitlab",
-            "Django",
-            "Clickhouse",
-            "Git",
-            " Python",
-            "SQL",
-            "Linux",
-            "Docker",
-            "Pytest",
-            "RabbitMQ",
-            "asyncio",
-            "PostgreSQL",
-            "Redis",
-            "FastAPI",
-            "Kubernetes",
-            "Helm"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "27 лет",
-        "salary": "",
-        "skill": "Опыт работы 2 года 9 месяцев",
-        "tags": [
-            "Java",
-            "SQL",
-            "ООП",
-            "Git",
-            "MVC",
-            "Docker",
-            "Python",
-            "Ml",
-            "Gitlab",
-            "Машинное обучение",
-            "Математика"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "37 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 1 месяц",
-        "tags": [
-            "Python",
-            "Flask",
-            "Git",
-            "SQL",
-            "C++",
-            "Django Rest Framework",
-            "CI/CD",
-            "Docker",
-            "REST API",
-            "SQLite",
-            "PostgreSQL",
-            "Nginx",
-            "Gunicorn",
-            "Notion",
-            "Celery",
-            "GitHub.Actions",
-            "Docker-compose",
-            "Django",
-            "GitHub"
-        ]
-    },
-    {
-        "name": "Разработчик Python",
-        "sex": "Мужчина",
-        "age": "",
-        "salary": "",
-        "skill": "Опыт работы 3 года 7 месяцев",
-        "tags": [
-            "PostgreSQL",
-            "Python",
-            "aiohttp",
-            "FastAPI",
-            "Docker",
-            "Django Framework",
-            "Django",
-            "Celery",
-            "Redis",
-            "MongoDB"
-        ]
-    },
-    {
-        "name": "Программист C/С++, Python",
-        "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "",
-        "skill": "Опыт работы 2 года 11 месяцев",
-        "tags": [
-            "Исполнительность",
-            "Коммуникабельность",
-            "Умение решать конфликты",
-            "Умение быстро адаптироваться"
-        ]
-    },
-    {
-        "name": "Python-разработчик",
-        "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "",
-        "skill": "Опыт работы 4 года 5 месяцев",
-        "tags": [
-            "Django Framework",
-            "Python",
-            "HTML",
-            "Git",
-            "PostgreSQL",
-            "SQL",
-            "ООП",
-            "Nginx",
-            "Gunicorn",
-            "Docker",
-            "Ubuntu Server",
-            "DRF",
-            "Linux",
-            "Atlassian Jira",
-            "Selenium IDE",
-            "Pandas",
-            "Flask",
-            "Atlassian Confluence",
-            "FastAPI",
-            "REST",
-            "SQLite",
-            "JSON",
-            "REST API",
-            "CI/CD",
-            "Gitlab",
-            "Django Rest Framework",
-            "Golang",
-            "Go",
-            "Asyncio"
-        ]
-    },
-    {
         "name": "Программист Python",
         "sex": "Мужчина",
         "age": "40 лет",
         "salary": "165000 ₽ на руки",
-        "skill": "Опыт работы 13 лет 11 месяцев",
+        "experience": "Опыт работы 13 лет 11 месяцев",
         "tags": [
             "Python",
             "C++",
@@ -458,36 +15,12 @@
             "Node.js",
             "AngularJS",
             "Linux"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "42 года",
-        "salary": "",
-        "skill": "Опыт работы 19 лет 7 месяцев",
-        "tags": [
-            "Python",
-            "HTML",
-            "Nginx",
-            "prometheus",
-            "Graphite",
-            "Django Framework",
-            "PostgreSQL",
-            "JavaScript",
-            "Pandas",
-            "Sklearn",
-            "Selenium IDE",
-            "Jetbrains Phpstorm",
-            "MySQL",
-            "PHP",
-            "CMS Wordpress",
-            "amoCRM",
-            "Apache HTTP Server",
-            "Linux",
-            "ООП",
-            "Celery",
-            "RabbitMQ"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
         ]
     },
     {
@@ -495,7 +28,7 @@
         "sex": "Мужчина",
         "age": "25 лет",
         "salary": "150000 ₽ на руки",
-        "skill": "Опыт работы 3 года 7 месяцев",
+        "experience": "Опыт работы 3 года 7 месяцев",
         "tags": [
             "Python",
             "Django Rest Framework",
@@ -509,66 +42,14 @@
             "FastAPI",
             "OpenCV",
             "SQLAlchemy"
-        ]
-    },
-    {
-        "name": "Junior Python Developer",
-        "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 8 месяцев",
-        "tags": [
-            "Работоспособность",
-            "Python",
-            "Linux",
-            "Django Framework",
-            "Flask",
-            "Git",
-            "JavaScript"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "",
-        "skill": "Опыт работы 2 года 6 месяцев",
-        "tags": [
-            "Git",
-            "Python",
-            "ООП",
-            "Django Framework",
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Django REST framework",
-            "Falcon",
-            "Redis",
-            "SQL",
-            "Selenium",
-            "Celery",
-            "Docker",
-            "Flask"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "190000 ₽ на руки",
-        "skill": "Опыт работы 4 года 10 месяцев",
-        "tags": [
-            "Python",
-            "SQL",
-            "Git",
-            "Linux",
-            "HTML",
-            "MySQL",
-            "PostgreSQL",
-            "CSS",
-            "Bash",
-            "Django Framework",
-            "Selenium IDE"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
@@ -576,7 +57,7 @@
         "sex": "Мужчина",
         "age": "31 год",
         "salary": "160000 ₽ на руки",
-        "skill": "Опыт работы 12 лет 4 месяца",
+        "experience": "Опыт работы 12 лет 4 месяца",
         "tags": [
             "C/C++",
             "Django Framework",
@@ -605,6 +86,15 @@
             "Debian",
             "Redmine",
             "Bash"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа",
+            "вахтовый метод"
         ]
     },
     {
@@ -612,245 +102,23 @@
         "sex": "Мужчина",
         "age": "23 года",
         "salary": "100000 ₽ на руки",
-        "skill": "Опыт работы 4 года 3 месяца",
+        "experience": "Опыт работы 4 года 3 месяца",
         "tags": [
             "Математический анализ",
             "Математическая статистика",
             " Python",
             "Бухгалтерский учет",
             "Деловое общение"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 9 месяцев",
-        "tags": [
-            "Исполнительность",
-            "Индивидуальное обучение",
-            "Работа в команде",
-            "ООП",
-            "SQL",
-            "MS SQL",
-            "MS Excel",
-            "Git",
-            "HTML5",
-            "CSS",
-            "SQLite",
-            "Python",
-            "PHP",
-            "Atlassian Jira",
-            "JS",
-            "Django Framework",
-            "PostgreSQL"
-        ]
-    },
-    {
-        "name": "Разработчик Python",
-        "sex": "Мужчина",
-        "age": "36 лет",
-        "salary": "500000 ₽ на руки",
-        "skill": "Опыт работы 12 лет",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "Git",
-            "PostgreSQL",
-            "Администрирование серверов Linux",
-            "JavaScript",
-            "HTML",
-            "CSS",
-            "Управление проектами",
-            "Tornado",
-            "Cap'n'Proto",
-            "Docker",
-            "Docker-compose",
-            "RabbitMQ",
-            "MongoDB",
-            "Aiohttp"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "32 года",
-        "salary": "",
-        "skill": "Опыт работы 11 лет 1 месяц",
-        "tags": [
-            "Программирование",
-            "Bash",
-            "Python",
-            "C/C++",
-            "Git",
-            "Docker",
-            "Администрирование серверов Linux",
-            "Nginx",
-            "VMware",
-            "MySQL"
-        ]
-    },
-    {
-        "name": "Python data engineer / data science программист",
-        "sex": "Мужчина",
-        "age": "48 лет",
-        "salary": "250000 ₽ на руки",
-        "skill": "Опыт работы 4 года 1 месяц",
-        "tags": [
-            "Python",
-            "Machine learning",
-            "Pandas",
-            "Tensorflow",
-            "Sqllite",
-            "Deep Learning",
-            "Numpy",
-            "Hadoop",
-            "Матстастистика",
-            "Теория вероятности",
-            "Pytorch",
-            "Keras",
-            "Kaggle",
-            "Sklearn",
-            "PostgreSQL",
-            "Git",
-            "Go",
-            "Django Framework",
-            "SQL",
-            "Linux"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Мужчина",
-        "age": "26 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 11 месяцев",
-        "tags": [
-            "Django Framework",
-            "HTML",
-            "CSS",
-            "Flask",
-            " Python",
-            "SQLite",
-            "Git",
-            "PostgreSQL",
-            "Jinja",
-            "AWS",
-            "MongoDB",
-            "Linux",
-            "OAuth",
-            "OAuth2",
-            "Google API",
-            "Ansible",
-            "Kubernetes"
-        ]
-    },
-    {
-        "name": "Python Backend middle",
-        "sex": "Мужчина",
-        "age": "20 лет",
-        "salary": "",
-        "skill": "Опыт работы 1 год 1 месяц",
-        "tags": [
-            "Программист",
-            "Python",
-            "Django",
-            "Django Framework",
-            "PostgreSQL",
-            "Linux",
-            "Bash",
-            "Nginx",
-            "Celery",
-            "Docker",
-            "Git",
-            "SQL",
-            "Redis",
-            "Backend",
-            "RabbitMQ",
-            "GitHub",
-            "Aws",
-            "DRF"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "",
-        "salary": "",
-        "skill": "Опыт работы 1 год 4 месяца",
-        "tags": [
-            "Python",
-            "JavaScript",
-            "CSS",
-            "Django Framework",
-            "Flask",
-            "PostgreSQL",
-            "NoSQL",
-            "MongoDB",
-            "MySQL",
-            "HTML5",
-            "Java",
-            "Docker",
-            "Django Rest Framework",
-            "Vue",
-            "API",
-            "Django",
-            "SQL",
-            "FastAPI",
-            "VueJS",
-            "CMake",
-            "CSS3",
-            "REST API",
-            "Nginx",
-            "Bootstrap",
-            "HTML"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "36 лет",
-        "salary": "",
-        "skill": "Опыт работы 16 лет 7 месяцев",
-        "tags": [
-            "Документальное сопровождение",
-            "Работа с ТМЦ",
-            "Международные контакты",
-            "Закупка товаров и услуг",
-            "Python",
-            "Технический английский",
-            "Linux",
-            "ООП",
-            "Django Framework",
-            "Работа в команде"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "31 год",
-        "salary": "",
-        "skill": "Опыт работы 9 лет 1 месяц",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "PostgreSQL",
-            "MySQL",
-            "MongoDB",
-            "JavaScript",
-            "Linux",
-            "Git",
-            "Администрирование серверов Linux",
-            "HTML5",
-            "Bash",
-            "CSS3",
-            "Data Analysis",
-            "Machine learning",
-            "Веб-программирование",
-            "Bootstrap",
-            "Flask",
-            "Ubuntu Server"
+        ],
+        "employment_list": [
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
@@ -858,212 +126,55 @@
         "sex": "Мужчина",
         "age": "33 года",
         "salary": "115000 ₽ на руки",
-        "skill": "Опыт работы 14 лет 6 месяцев",
+        "experience": "Опыт работы 14 лет 6 месяцев",
         "tags": [
             "Русский — Родной"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "33 года",
-        "salary": "",
-        "skill": "Опыт работы 9 лет 6 месяцев",
-        "tags": [
-            "SQL",
-            "C++",
-            "ООП",
-            "SQLite",
-            "MS SQL",
-            "Разработка ПО",
-            "Математическое моделирование",
-            "Python",
-            "Tensorflow",
-            "Keras",
-            "Pytorch",
-            "Neural network",
-            "Numpy",
-            "Pandas",
-            "Pyqt5",
-            "Selenium",
-            "нейросети",
-            "Vbox",
-            "Insomnia",
-            "Postman",
-            "Kibana",
-            "Sentry",
-            "REST",
-            "JSON",
-            "Docker",
-            "GitHub",
-            "Kafka",
-            "ClickHouse"
-        ]
-    },
-    {
-        "name": "Junior python",
-        "sex": "Мужчина",
-        "age": "30 лет",
-        "salary": "",
-        "skill": "Опыт работы 9 месяцев",
-        "tags": [
-            "Scratch",
-            "PyGame",
-            "Bot telegram",
-            "Bot vk",
-            "Python"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "60000 ₽ на руки",
-        "skill": "Опыт работы 2 года 6 месяцев",
-        "tags": [
-            "Исполнительность",
-            "Внимательность",
-            "Ответственность",
-            "Пользователь ПК",
-            "Git",
-            "MySQL",
-            "PostgreSQL",
-            "Работа с большим объемом информации",
-            "Английский язык",
-            "numpy",
-            "pandas",
-            " Python",
-            "tensorflow",
-            "Big Data",
-            "Data Analysis",
-            "AI",
-            "Машинное обучение",
-            "Искусственный интеллект",
-            "Системная архитектура",
-            "Глубокое обучение",
-            "Проектирование систем",
-            "Компьютерное зрение",
-            "Data Science",
-            "ООП",
-            "позитивное мышление",
-            "HTML5",
-            "JavaScript",
-            "CSS"
-        ]
-    },
-    {
-        "name": "Junior+/Middle Developer",
-        "sex": "Мужчина",
-        "age": "21 год",
-        "salary": "120000 ₽ на руки",
-        "skill": "Опыт работы 2 года 8 месяцев",
-        "tags": [
-            "FastAPI",
-            "Django Framework",
-            "MongoDB",
-            "PostgreSQL",
-            "SQLite",
-            "Solidity",
-            "Flask"
-        ]
-    },
-    {
-        "name": "Python разработчик",
-        "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 9 месяцев",
-        "tags": [
-            "Python",
-            "Git",
-            "Linux",
-            "C",
-            "Docker",
-            "C/C++",
-            "Unix",
-            "SQL"
-        ]
-    },
-    {
-        "name": "Python-разработчик",
-        "sex": "Мужчина",
-        "age": "34 года",
-        "salary": "",
-        "skill": "Опыт работы 10 лет 10 месяцев",
-        "tags": [
-            "Java",
-            "С#",
-            "Python",
-            "ООП",
-            "Git",
-            "Работа с большим объемом информации",
-            "Английский язык"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
         ]
     },
     {
         "name": "Python Developer",
         "sex": "Мужчина",
-        "age": "25 лет",
-        "salary": "",
-        "skill": "Опыт работы 11 месяцев",
+        "age": "26 лет",
+        "salary": "120000 ₽ на руки",
+        "experience": "Опыт работы 3 года 1 месяц",
         "tags": [
             "Python",
-            "Django Framework",
-            "Django Rest Framework",
-            "API",
-            "ООП",
-            "SQLite",
-            "PostgreSQL",
-            "Nginx",
-            "Docker",
-            "Linux",
-            "GitHub",
-            "Unittest",
-            "Алгоритмы и структуры данных",
-            "Асинхронное программирование"
-        ]
-    },
-    {
-        "name": "Senior Python Engineer",
-        "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "250000 ₽ на руки",
-        "skill": "Опыт работы 6 лет 9 месяцев",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "Nginx",
-            "PostgreSQL",
-            "MySQL",
-            "Flask",
+            "C/C++",
+            "C#",
+            "HTML",
+            "CSS",
             "JavaScript",
-            "Git",
-            "django-rest-framework",
-            "Vue.js",
-            "Celery",
-            "RabbitMQ",
-            "Linux"
-        ]
-    },
-    {
-        "name": "Разработчик Python",
-        "sex": "Мужчина",
-        "age": "39 лет",
-        "salary": "",
-        "skill": "Опыт работы 6 лет",
-        "tags": [
-            "Python",
-            "MySQL",
-            "Обучение и развитие",
-            "Английский язык",
-            "Git",
-            "Docker",
             "Linux",
-            "Data Analysis",
+            "ООП",
             "SQL",
+            "Git",
+            "TensorFlow",
+            "Matplotlib",
             "Pandas",
-            "Django",
-            "Numpy"
+            "SymPy",
+            "NumPy",
+            "SciPy",
+            "Plotly",
+            "OpenCV",
+            "PyTest",
+            "Django Rest Framework",
+            "Django Framework",
+            "FastApi",
+            "UML",
+            "Математическая статистика",
+            "Математическое моделирование"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
         ]
     },
     {
@@ -1071,7 +182,7 @@
         "sex": "Male",
         "age": "24 years",
         "salary": "160000 ₽ in hand",
-        "skill": "Work experience 3 years 7 months",
+        "experience": "Work experience 3 years 7 months",
         "tags": [
             " Python",
             "Linux",
@@ -1096,599 +207,39 @@
             "TensorFlow",
             "Алгоритмы и структуры данных",
             "REST API"
+        ],
+        "employment_list": [
+            "Информация о занятости не найдена"
+        ],
+        "schedule_list": [
+            "Информация о графике работы не найдена"
         ]
     },
     {
-        "name": "Программист-разработчик Python",
+        "name": "Junior+/Middle Developer",
         "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "275000 ₽ на руки",
-        "skill": "Опыт работы 4 года 1 месяц",
+        "age": "21 год",
+        "salary": "120000 ₽ на руки",
+        "experience": "Опыт работы 2 года 8 месяцев",
         "tags": [
-            "Data Warehouse",
-            "S3",
-            "RabbitMQ",
-            "Redis",
-            "Docker",
             "FastAPI",
-            "Django",
-            "Python",
-            "SQL",
-            "PostgreSQL",
-            "Airflow",
-            "Git",
-            "Unit Testing",
-            "Backend",
-            "SQLAlchemy",
-            "Celery",
-            "OpenStack",
-            "CI/CD",
-            "Kubernetes",
-            "Numpy",
-            "Clickhouse",
-            "Go",
-            "Elasticsearch",
-            "Работа с базами данных",
-            "Linux",
-            "Kafka",
-            "GraphQL",
-            "Big Data",
-            "S3 Parquet",
-            "Grafana"
-        ]
-    },
-    {
-        "name": "Разработчик",
-        "sex": "Мужчина",
-        "age": "28 лет",
-        "salary": "4000 $ на руки",
-        "skill": "Опыт работы 6 лет 11 месяцев",
-        "tags": [
-            "Python 2",
-            "Python 3",
-            "RabbitMQ",
-            "python multiprocessing",
-            "Scrapy",
             "Django Framework",
-            "Git",
-            "Redis",
-            "asyncio",
-            "API"
-        ]
-    },
-    {
-        "name": "Middle Python Backend Developer",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "320000 ₽ на руки",
-        "skill": "Опыт работы 3 года 5 месяцев",
-        "tags": [
-            "Python",
-            "SQL",
-            "Git",
-            "Linux",
-            "PostgreSQL",
-            "Docker",
-            "React",
-            "Django Framework",
-            "Django rest framework",
-            "ООП",
-            "Flask",
-            "SQLAlchemy",
-            "Redis",
-            "celery",
-            "pytest",
-            "FastAPI",
-            "Django Rest Framework",
-            "Celery",
-            "Django",
-            "JavaScript",
-            "Docker-compose",
-            "npm",
-            "Gitlab",
-            "Clean Architecture",
-            "Kubernetes",
-            "REST API",
-            "ReactJS"
-        ]
-    },
-    {
-        "name": "Python backend-разработчик",
-        "sex": "Мужчина",
-        "age": "32 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 11 месяцев",
-        "tags": [
-            "Ответственность",
-            " Python",
-            "Linux",
-            "Администрирование серверов Linux",
-            "Git",
-            "MySQL",
-            "TCP/IP",
-            " ООП",
-            "Bash",
-            "Слепая печать",
-            "Работа в коммандной строке",
-            "Wifi networks",
-            "Высокая скорость печати",
-            "Ubuntu Server",
-            "CentOS",
-            "Debian",
-            "Agile",
-            "Scrum",
-            "Грамотная речь",
-            "Английский язык",
-            "Умение работать в команде",
-            "Selenium IDE",
-            "Web3",
-            "SQL"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "32 года",
-        "salary": "350000 ₽ на руки",
-        "skill": "Опыт работы 8 лет 11 месяцев",
-        "tags": [
-            "Python",
-            "Machine Learning",
-            "Linux",
-            "Computer Vision",
-            "Deep Learning",
-            "Mathematical Programming",
-            "Data Analysis",
-            "GoLang"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "",
-        "skill": "Опыт работы 2 года 9 месяцев",
-        "tags": [
-            " Python",
-            "Flask",
-            "FastAPI",
-            "Pyramid",
-            "SQLAlchemy",
-            "SQL",
-            "PostgreSQL",
-            "Couchbase",
-            "Docker",
-            " Git",
-            "Linux",
-            "Unit Testing",
-            "Backend"
-        ]
-    },
-    {
-        "name": "Backend-разработчик (Python/Django)",
-        "sex": "Мужчина",
-        "age": "27 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 3 месяца",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "SQL",
-            "Английский язык",
-            "Git",
-            "Bash",
-            "HTML",
-            "Flask",
-            "SQLAlchemy",
-            "Linux",
-            "Postman",
-            "PowerShell",
-            "PyCharm",
-            "Git bash",
-            "Docker",
-            "API",
-            "GitHub",
-            "HTTP",
-            "REST",
-            "Celery"
-        ]
-    },
-    {
-        "name": "Разработчик Python",
-        "sex": "Мужчина",
-        "age": "26 лет",
-        "salary": "",
-        "skill": "Опыт работы 4 года 11 месяцев",
-        "tags": [
-            "Python",
-            "Django",
-            "FastAPI",
-            "API",
-            "REST",
-            "aiohttp",
-            "Работа с базами данных",
-            "SQL",
-            "Redis",
-            "Celery",
-            "Docker",
-            "Git",
-            "PostgreSQL",
-            "GitHub",
-            "Linux",
-            "Базы данных",
-            "Асинхронное программирование",
-            "NoSQL"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "",
-        "skill": "Опыт работы 7 лет 5 месяцев",
-        "tags": [
-            "Django Framework",
-            "Flask",
-            "PostgreSQL",
-            "Python",
-            "HTML",
-            "CSS",
-            "SQL",
-            "JavaScript",
-            "GraphQL",
-            "REST",
-            "Hypersonic Sql",
-            "Linux",
-            "Git",
-            "HTML5",
-            "jQuery",
-            "Тестирование",
-            "ООП",
-            "MySQL",
-            "FastAPI",
-            "pytest",
-            "Asyncio",
             "MongoDB",
-            "Kafka streams",
-            "Kafka",
-            "Pyspark",
-            "Spark",
-            "Airflow"
-        ]
-    },
-    {
-        "name": "Разработчик Python",
-        "sex": "Мужчина",
-        "age": "28 лет",
-        "salary": "",
-        "skill": "Опыт работы 3 года 10 месяцев",
-        "tags": [
-            " Python",
-            "Linux",
-            "Django Framework",
-            "Flask",
             "PostgreSQL",
-            "MySQL",
-            "SQLAlchemy",
             "SQLite",
-            "Requests",
-            "Threading",
-            "Celery",
-            "Docker",
-            "JavaScript",
-            "CSS",
-            "Bootstrap",
-            "Git",
-            "GitHub",
-            "Agile",
-            "HTML5",
-            "SOAP",
-            "XML",
-            "Django Rest Framework",
-            "GitLab",
-            "SQL"
-        ]
-    },
-    {
-        "name": "Python Backend Developer",
-        "sex": "Мужчина",
-        "age": "23 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 11 месяцев",
-        "tags": [
-            "Python",
-            "Linux",
-            "Django rest framework",
-            "PostgreSQL",
-            "Git",
-            "Docker",
-            "Asyncio",
-            "Pytest",
-            "celery",
-            "Redis",
-            "SQL",
-            "Go",
-            "API",
-            "ООП",
-            "REST",
-            "Django Framework",
-            "RabbitMQ",
-            "Kafka",
-            "CI/CD",
-            "SOLID",
-            "MySQL",
-            "REST API",
-            "Fastapi"
-        ]
-    },
-    {
-        "name": "Python developer",
-        "sex": "Мужчина",
-        "age": "38 лет",
-        "salary": "40000 ₽ на руки",
-        "skill": "Опыт работы 5 лет",
-        "tags": [
-            "Linux",
-            "HTML5",
-            "CSS3",
-            "JavaScript",
-            "Git",
-            "SQL",
-            "Python",
-            "Flask",
-            "HTTP",
-            "PostgreSQL",
-            "Unit Testing",
-            "Chrome Dev Tools Protocol",
-            "Selenium WebDriver",
-            "MongoDB"
-        ]
-    },
-    {
-        "name": "Backend-разработчик (Python)",
-        "sex": "Мужчина",
-        "age": "55 лет",
-        "salary": "",
-        "skill": "Опыт работы 19 лет",
-        "tags": [
-            "Python",
-            "Django Framework",
-            "Git",
-            "PostgreSQL",
-            "Linux",
-            "Nginx",
-            "Docker",
-            "REST API",
-            "SQLite",
-            "Яндекс.Облако",
-            "pytest",
-            "Gunicorn",
-            "WSL",
-            "Docker Compose",
-            "ООП",
-            "Bash",
-            "AWS EC2"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "33 года",
-        "salary": "80000 ₽ на руки",
-        "skill": "Опыт работы 12 лет 10 месяцев",
-        "tags": [
-            "Asterisk",
-            "iiko",
-            "TCP/IP",
-            "Python",
-            "XML",
-            "XPath",
-            "Pandas",
-            "Scrapy",
-            "lxml",
-            "Numpy",
-            "CentOS",
-            "Requests",
-            "Ubuntu Server",
-            "python 3",
-            "Big Data",
-            "Nginx",
-            "Flask",
-            "Анализ данных",
-            "SQL",
-            "Администрирование серверов Linux",
-            "JSON API",
-            "MySQL",
-            "MongoDB",
-            "Статистический анализ",
-            "Ubuntu",
-            "REST",
-            "ERP",
-            "Node.js",
-            "NoSQL"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Мужчина",
-        "age": "23 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 1 месяц",
-        "tags": [
-            "Python",
-            "Git",
-            "Fast API",
-            "Unit Testing",
-            "aiohttp",
-            "PostgreSQL",
-            "MongoDB",
-            "Linux",
-            "CI/CD",
-            "Computer Science",
-            "Helm",
-            "Flask",
-            "TCP/IP",
-            "WebSocket",
-            "NTRIP",
-            "Collaboration skills",
-            "MongoDB Atlas",
-            "Terraform",
-            "Elasticsearch",
-            "InfluxDB",
-            "Kotlin",
-            "Kubernetes",
-            "Infrastructure",
-            "Docker",
-            "SQL",
-            "NoSQL",
-            "REST API",
-            "GitHub",
-            "Работа с базами данных",
-            "Асинхронное программирование"
-        ]
-    },
-    {
-        "name": "Программист Python ",
-        "sex": "Male",
-        "age": "23 years",
-        "salary": "50000 ₽ in hand",
-        "skill": "Work experience 11 months",
-        "tags": [
-            "Python",
-            "Flask",
-            "Django Framework",
-            "SQL",
-            "PostgreSQL",
-            "PHP",
-            "Laravel",
-            "Nginx",
-            "C++",
-            "Git",
-            "Linux"
-        ]
-    },
-    {
-        "name": "data scientist",
-        "sex": "Мужчина",
-        "age": "",
-        "salary": "",
-        "skill": "Опыт работы 4 года 6 месяцев",
-        "tags": [
-            "Git",
-            "Python",
-            "Django Framework",
-            "Keras",
-            "TensorFlow",
-            "Scikit-learn",
-            "SQL",
-            "HTML",
-            "CSS",
-            "Linux",
-            "MySQL",
-            "C++",
-            "Математическая статистика",
-            "Jupiter",
-            "NLP",
-            "NumPy",
-            "Pandas",
-            "Machine learning",
-            "Matplotlib",
-            "Коммуникабельность",
-            "Ответственность"
-        ]
-    },
-    {
-        "name": "Программист",
-        "sex": "Мужчина",
-        "age": "24 года",
-        "salary": "",
-        "skill": "Опыт работы 3 года 6 месяцев",
-        "tags": [
-            " Python",
-            "JavaScript",
-            "Git",
-            "Bash",
-            "Linux",
-            "Английский язык",
-            "RabbitMQ",
-            "PostgreSQL",
-            "DRF",
-            "Couchbase",
-            "FastAPI",
-            "Nginx",
-            "Lua",
-            "Grafana",
-            "Loki",
-            "InfluxDB",
-            "Vector",
-            "Nest.js",
-            "Rust",
-            "eBPF",
-            "Node.js",
-            "Ansible",
-            "TypeScript",
-            "Паттерны проектирования",
-            "Проектирование систем",
-            "Основы компьютерных сетей",
-            "Системная архитектура",
-            "Управление проектами",
-            "Системное программирование"
-        ]
-    },
-    {
-        "name": "Python Developer (Backend)",
-        "sex": "Мужчина",
-        "age": "33 года",
-        "salary": "600000 ₽ на руки",
-        "skill": "Опыт работы 19 лет 6 месяцев",
-        "tags": [
-            "Разработка ПО",
-            "Python",
-            "SQL",
-            "PostgreSQL",
-            "MySQL",
-            "HTML",
-            "CSS",
-            "jQuery",
-            "Nginx",
-            "Docker",
-            "Linux",
-            "FastAPI",
-            "Alembic",
-            "Uvicorn",
-            "SQLAlchemy",
-            "SQLModel",
-            "TeamCity",
-            "Kubernetes",
-            "Make",
-            "Gerrit",
-            "Scrum",
-            "Poetry",
-            "Celery",
-            "Pytest",
-            "ORACLE",
-            "Redis",
-            "REST",
-            "SOAP",
-            "RPC",
-            "Camunda BPM"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Мужчина",
-        "age": "37 лет",
-        "salary": "",
-        "skill": "Опыт работы 10 лет 7 месяцев",
-        "tags": [
-            "Linux",
-            "Python",
-            "Django Framework",
-            "MySQL",
-            "Pandas",
-            "Machine Learning Algorythms",
-            "Elasticsearch",
-            "Sklearn"
+            "Solidity",
+            "Flask"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
@@ -1696,7 +247,7 @@
         "sex": "Мужчина",
         "age": "21 год",
         "salary": "160000 ₽ на руки",
-        "skill": "Опыт работы 4 года 2 месяца",
+        "experience": "Опыт работы 4 года 2 месяца",
         "tags": [
             "Git",
             " Python",
@@ -1714,333 +265,1150 @@
             "Docker-compose",
             "Django Rest Framework",
             "Nuxt"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
         "name": "Программист Python",
         "sex": "Мужчина",
-        "age": "58 лет",
-        "salary": "",
-        "skill": "Опыт работы 11 лет 5 месяцев",
+        "age": "38 лет",
+        "salary": "140000 ₽ на руки",
+        "experience": "Опыт работы 9 лет 6 месяцев",
         "tags": [
-            "Концепция ООП",
-            "Язык — Python",
-            "Фреймворки - Django, Django rest framework",
-            "Базы данных - SQLite, MySQL, PostgreSQL, MongoDB",
-            "Основы HTML, CSS, Bootstrap, Java Script",
-            "Системы для контроля версий — Git",
-            "Навыки развертывания проекта на сервере на базе серверной ОС, Linux Ubuntu",
-            "Навыки написания модульных тестов - библиотека Unittest",
-            "Навыки разработки GUI – библиотека PyQt",
-            "Навыки работы с Docker"
-        ]
-    },
-    {
-        "name": "Python Backend Developer",
-        "sex": "Мужчина",
-        "age": "31 год",
-        "salary": "",
-        "skill": "Опыт работы 3 года 9 месяцев",
-        "tags": [
-            "SQL",
-            "Git",
-            "Kafka",
-            "REST",
-            "Django Framework",
-            "Linux",
-            "GitHub",
-            "Gitlab",
-            "Django Rest Framework",
-            "API",
-            "MVC",
-            "JavaScript",
-            "Django",
-            "MongoDB",
             "Python",
-            "FastAPI",
-            "Flask",
-            "PostgreSQL",
+            "Node.js",
+            "VBA",
             "MySQL",
-            "Nginx",
-            "RabbitMQ",
-            "Redis",
-            "Celery",
+            "OpenVPN",
+            "3proxy",
+            "Graphite",
+            "Grafana",
+            "Git",
             "Docker",
-            "Docker Swarm",
-            "CI/CD",
-            "Алгоритмы и структуры данных",
-            "Паттерны проектирования",
-            " ООП",
-            "OpenAI"
+            "Lxc",
+            "MongoDB",
+            "Telegram",
+            "Django Framework"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
-        "name": "Python Developer",
+        "name": "Senior Python Developer",
         "sex": "Мужчина",
-        "age": "32 года",
-        "salary": "",
-        "skill": "Опыт работы 8 лет 1 месяц",
+        "age": "20 лет",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 5 лет 9 месяцев",
         "tags": [
-            "MS Office",
-            "Python",
-            "Linux",
-            "Git",
+            "Python 3",
+            "HTML, CSS",
+            "JS",
+            "Pandas",
+            "PyTorch",
+            "twisted",
+            "matplotlib",
+            "numpy",
+            "Flask",
+            "PyQt5",
+            "requests",
+            "SciPy",
+            "API",
             "SQL",
-            "MySQL"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Женщина",
-        "age": "28 лет",
-        "salary": "",
-        "skill": "Опыт работы 4 года 6 месяцев",
-        "tags": [
-            "Python",
-            "Linux",
-            "Git",
+            "Английский язык",
+            "PyTest",
+            "allure",
+            "appium",
             "Django Framework",
             "PostgreSQL",
-            "Docker",
-            "DRF",
-            "pytest",
-            "Unit Testing",
-            "Redis",
+            "FastAPI",
+            "asyncio",
+            "Threading",
+            "scikit-learn",
+            "ctypes",
+            "Redis, Kafka",
             "RabbitMQ",
-            "Celery"
-        ]
-    },
-    {
-        "name": "programming(python)",
-        "sex": "Male",
-        "age": "30 years",
-        "salary": "",
-        "skill": "Work experience 5 years 5 months",
-        "tags": [
-            "Исполнительность",
-            "Mathematical Programming",
-            "Mathematical Analysis",
-            "Mathematics",
-            "Team work",
-            "Python",
-            "Data Analysis"
-        ]
-    },
-    {
-        "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "45 лет",
-        "salary": "",
-        "skill": "Опыт работы 11 лет 7 месяцев",
-        "tags": [
-            "Ответственность",
-            "Python",
-            "Английский язык",
-            "Работа в команде",
-            "Грамотная речь",
-            "Работа с большим объемом информации",
-            "Водительское удостоверение категории B",
-            "Git",
-            "ООП",
-            "Поиск информации в интернет",
-            "Навыки продаж",
-            "Активные продажи",
-            "Умение работать в команде",
-            "MS Outlook",
-            "Деловая коммуникация",
-            "Грамотность",
-            "Internet",
-            "Проведение презентаций",
-            "Заключение договоров",
-            "Деловое общение",
-            "Деловая переписка",
-            "Ведение переговоров",
-            "Linux"
+            "Docker",
+            "Meta-программирование",
+            "Data analysing"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
         "name": "Программист Python",
-        "sex": "Мужчина",
-        "age": "50 лет",
-        "salary": "",
-        "skill": "Опыт работы 7 лет 2 месяца",
-        "tags": [
-            "Python, C++, PMBook"
-        ]
-    },
-    {
-        "name": "Python Teamlead",
-        "sex": "Мужчина",
-        "age": "45 лет",
-        "salary": "",
-        "skill": "Опыт работы 5 лет 5 месяцев",
-        "tags": [
-            "Публичные выступления",
-            "Преподаватель",
-            "Веб-программирование",
-            "Python",
-            "Тренинги",
-            "Управление командой",
-            "Наставничество",
-            "Big Data",
-            "vue.js",
-            "JavaScript",
-            "CSS",
-            "HTML",
-            "Django Framework",
-            "Linux",
-            "Redis",
-            "IoT",
-            "Go"
-        ]
-    },
-    {
-        "name": "Python Developer",
         "sex": "Мужчина",
         "age": "29 лет",
-        "salary": "",
-        "skill": "Опыт работы 4 года 8 месяцев",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 9 лет 1 месяц",
         "tags": [
-            "Python",
-            "Django Framework",
-            "Git",
-            "Английский язык",
-            "SQL",
-            "Django REST Framework",
-            "Selenium",
-            "Linux",
-            "Web Application Development",
-            "JSON API"
+            "Общительный",
+            "Целеустремленный",
+            "Ответственный"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
-        "name": "Python Developer",
+        "name": "Программист Python",
         "sex": "Мужчина",
-        "age": "22 года",
-        "salary": "250000 ₽ на руки",
-        "skill": "Опыт работы 1 год 7 месяцев",
+        "age": "25 лет",
+        "salary": "120000 ₽ на руки",
+        "experience": "Опыт работы 6 лет 1 месяц",
         "tags": [
-            "Работоспособность",
-            "Креативность",
-            "Вовлеченность",
-            "Организаторские навыки",
-            "Ориентация на результат",
-            "Деловое общение",
-            "Управленческие навыки",
-            "Работа в команде",
-            "Ведение переговоров",
-            "Грамотная речь",
-            "Scrum",
-            "Методологии командной работы",
-            "Стрессоустойчивость",
-            "SQL",
-            "Flask",
-            "SQLAlchemy",
-            "Базы данных",
-            "Бизнес логика",
-            "Docker",
+            "Ответственность",
+            "Быстрая обучаемость",
+            "Общие знания о маркетинге",
+            "Коммуникабельность",
+            "Знания в Smm",
+            "Умение находить общий язык",
+            "Умение работать в команде",
+            "Таргет",
+            "Знание мой склад"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график"
+        ]
+    },
+    {
+        "name": "Программист Python",
+        "sex": "Мужчина",
+        "age": "43 года",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 13 лет",
+        "tags": [
+            "Django Framework",
             "Python",
-            "Структуры данных",
-            "Multithread Programming",
-            "Разработка ПО",
-            "Проектные методологии",
-            "Тайм-менеджмент"
+            "Git",
+            "Atlassian Jira",
+            "SQL"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "удаленная работа"
         ]
     },
     {
         "name": "Программист Python",
         "sex": "Мужчина",
         "age": "31 год",
-        "salary": "30000 ₽ на руки",
-        "skill": "Опыт работы 7 лет 6 месяцев",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 7 лет 3 месяца",
         "tags": [
-            "AutoCAD",
-            "MS Office",
-            "нормативно-техническая документация",
-            "Точность и внимательность к деталям",
-            "Проектирование",
-            "Документальное сопровождение",
-            "Работа в команде",
-            "Python (базовый уровень)",
-            "SQL (базовый уровень)",
-            "Git",
+            "Водительское удостоверение категории B",
+            "Пользователь ПК",
+            "Схемотехника электронного оборудования",
+            "ЕСКД",
+            "Руководство коллективом",
             "Linux",
-            "Django Framework",
-            "DRF",
-            "Английский язык",
-            "Pandas",
-            "Numpy"
+            "Python",
+            "MySQL",
+            "Git"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа"
         ]
     },
     {
-        "name": "Python junior ",
-        "sex": "Женщина",
-        "age": "45 лет",
-        "salary": "40000 ₽ на руки",
-        "skill": "Опыт работы 12 лет 8 месяцев",
+        "name": "Разработчик Python",
+        "sex": "Мужчина",
+        "age": "23 года",
+        "salary": "170000 ₽ на руки",
+        "experience": "Опыт работы 2 года",
         "tags": [
             "Обучаемость",
-            "Python",
-            "Django Framework",
-            "SQL",
+            "MySQL",
+            "PostgreSQL",
+            " HTML",
+            "CSS",
             "Git",
-            "ООП",
-            "Docker",
-            "DRF"
-        ]
-    },
-    {
-        "name": "Python Developer",
-        "sex": "Мужчина",
-        "age": "26 лет",
-        "salary": "",
-        "skill": "Опыт работы 5 лет 3 месяца",
-        "tags": [
-            "Сборка ПК",
-            "Настройка ПК",
-            "Пользователь ПК",
-            "Настройка сетевых подключений",
-            "Администрирование",
-            "Ubuntu",
-            "Техническая поддержка",
-            "Информационные технологии",
-            "Python",
-            "Grafana",
-            "Prometheus",
-            "Криптовалюта",
-            "Трейдинг",
-            "Vue.js",
-            "API"
+            "Bootstrap",
+            "CSS3",
+            "Работа в команде",
+            "Linux",
+            "C#",
+            "Django Framework",
+            "REST",
+            "MariaDB",
+            "Базы данных",
+            "Работа с базами данных",
+            "Backend",
+            "GitHub",
+            " Python",
+            "СУБД",
+            "API",
+            "Линейное программирование",
+            "Динамическое программирование",
+            "ООП"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
         ]
     },
     {
         "name": "Программист Python",
-        "sex": "Male",
-        "age": "33 years",
-        "salary": "5000 € in hand",
-        "skill": "Work experience 14 years 5 months",
+        "sex": "Мужчина",
+        "age": "",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 15 лет 2 месяца",
+        "tags": [
+            "MS Excel",
+            "Adobe Acrobat",
+            "Adobe Design"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Python developer",
+        "sex": "Мужчина",
+        "age": "38 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 4 года 11 месяцев",
         "tags": [
             "Python",
-            "MySQL",
-            "JavaScript",
-            "Linux",
-            "PHP5",
-            "CMS Wordpress",
-            "Bash",
-            "HTML5",
-            "CSS3",
-            "PHP",
-            "Грамотность",
-            "HTML",
-            "Git",
-            "CSS",
             "Django Framework",
-            "jQuery",
             "Flask",
-            "Symfony",
-            "Symfony2",
-            "Laravel",
-            "Node.js"
+            "PostgreSQL",
+            "MySQL",
+            "MongoDB",
+            "Асинхронное программирование",
+            "ООП",
+            "Numpy",
+            "Pandas",
+            "Matplotlib",
+            "TensorFlow",
+            "PyTorch",
+            "Алгоритмы и структуры данных",
+            "Git",
+            "Pytest",
+            "Unit Testing"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Программист Python / Javascript",
+        "sex": "Мужчина",
+        "age": "43 года",
+        "salary": "130000 ₽ на руки",
+        "experience": "Опыт работы 23 года 1 месяц",
+        "tags": [
+            "Python",
+            "Django Framework",
+            "Flask",
+            "JavaScript",
+            "jQuery",
+            "Linux",
+            "HTML",
+            "CSS",
+            "Git",
+            "1С программирование",
+            "AngularJS"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "C++, Python разработчик",
+        "sex": "Мужчина",
+        "age": "22 года",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 2 года 10 месяцев",
+        "tags": [
+            "ООП",
+            "SQL",
+            "Git",
+            "STL",
+            "C++",
+            "Linux",
+            "Qt",
+            "Boost",
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "Django Framework",
+            "Docker",
+            "Bash",
+            "C",
+            "Cmake"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Программист Python/C++",
+        "sex": "Мужчина",
+        "age": "49 лет",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 25 лет 4 месяца",
+        "tags": [
+            "Python",
+            "Git",
+            "PostgreSQL",
+            "C++",
+            "Bootstrap",
+            "iot",
+            "Delphi",
+            "SQL",
+            "Flask",
+            "Selenium",
+            "PyGame",
+            "mikrotik scripts",
+            "csv",
+            "JSON API",
+            "HTML",
+            "JavaScript",
+            "pandas",
+            "raspberry pi",
+            "stm32",
+            "requests",
+            "nfc",
+            "mifare",
+            "Sigfox",
+            "NMEA",
+            "GPS",
+            "ZWave",
+            "FastAPI",
+            "RabbitMQ",
+            "MySQL",
+            "Linux"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Программист Python, аналитик данных",
+        "sex": "Мужчина",
+        "age": "40 лет",
+        "salary": "1200 $ на руки",
+        "experience": "Опыт работы 22 года 3 месяца",
+        "tags": [
+            "Мотивация к достижению целей",
+            "Способность принимать решения",
+            "Умение договариваться с клиентами",
+            "Управление временем",
+            "Управление затратами",
+            "Управление интернет-проектами"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа",
+            "вахтовый метод"
+        ]
+    },
+    {
+        "name": "Middle Python разработчик",
+        "sex": "Мужчина",
+        "age": "25 лет",
+        "salary": "200000 ₽ на руки",
+        "experience": "Опыт работы 1 год 7 месяцев",
+        "tags": [
+            "Django Framework",
+            "Python",
+            "PostgreSQL",
+            "Git",
+            "Redis",
+            "HTML5",
+            "Docker",
+            "Celery",
+            "Django Rest Framework",
+            "CSS3",
+            "Elasticsearch"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Python/Go Developer",
+        "sex": "Мужчина",
+        "age": "25 лет",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 2 года 7 месяцев",
+        "tags": [
+            "Docker",
+            "SQL",
+            "Git",
+            "PostgreSQL",
+            "Grafana",
+            "Prometheus",
+            "Go",
+            "Golang",
+            "Gin",
+            "Gorm",
+            "Python",
+            "Pandas",
+            "Redis",
+            "Kafka",
+            "gRPC"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Junior Python developer",
+        "sex": "Мужчина",
+        "age": "27 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 5 месяцев",
+        "tags": [
+            "Python",
+            "Trading",
+            "Анализ данных",
+            "Анализ рисков",
+            "Linux",
+            "MySQL",
+            "PostgreSQL",
+            "Pandas"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Разработчик Python (middle)",
+        "sex": "Мужчина",
+        "age": "28 лет",
+        "salary": "200000 ₽ на руки",
+        "experience": "Опыт работы 8 лет 6 месяцев",
+        "tags": [
+            "Английский язык",
+            "Немецкий язык",
+            "Деловая коммуникация",
+            "Деловая переписка",
+            "Экономический анализ",
+            "Пользователь ПК",
+            "Ведение переговоров",
+            "Управление проектами",
+            "Организаторские навыки",
+            "Работа в команде",
+            "Грамотная речь",
+            "Письменный перевод",
+            "Деловое общение",
+            "Проведение презентаций",
+            "Работа с большим объемом информации",
+            "Ориентация на результат",
+            "Python",
+            "C",
+            "Алгоритмы",
+            "C++",
+            "Docker",
+            "OpenShift",
+            "Jenkins",
+            "PostgreSQL",
+            "Go",
+            "Tensorflow",
+            "Keras",
+            "Tkinter",
+            "FastAPI"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Программист-разработчик (Python, PHP)",
+        "sex": "Мужчина",
+        "age": "27 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 5 лет 11 месяцев",
+        "tags": [
+            "Стрессоустойчивость",
+            "Коммуникабельность",
+            "Быстро обучаюсь",
+            "Пользователь ПК",
+            "Навыки продаж",
+            "Поиск информации в интернет",
+            "Водительское удостоверение категории B",
+            "Работа с документами постоянного хранения",
+            "Adobe Photoshop базовый уровень",
+            "Верстка сайта базовый уровень",
+            "Настройка контекстной рекламы базовый уровень",
+            " Python",
+            "Django Framework",
+            "C++",
+            "CSS",
+            "XML",
+            "HTML5",
+            "MySQL",
+            "Git",
+            "ООП",
+            "MS Office",
+            "Работа с базами данных",
+            "Доброжелательность",
+            "Консультирование",
+            "Веб-разработка",
+            "Базы данных",
+            "Веб-программирование",
+            "Разработка ПО",
+            " SQL",
+            "Laravel"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Middle Python developer",
+        "sex": "Мужчина",
+        "age": "29 лет",
+        "salary": "200000 ₽ на руки",
+        "experience": "Опыт работы 5 лет 11 месяцев",
+        "tags": [
+            "React.js",
+            "Python",
+            "C++",
+            "Git",
+            "Веб-программирование",
+            "ООП",
+            "Django",
+            "PostgreSQL",
+            "Celery"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Программист-разработчик Python, C++",
+        "sex": "Мужчина",
+        "age": "34 года",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 12 лет 10 месяцев",
+        "tags": [
+            "Python",
+            "C++",
+            "ООП",
+            "SQL",
+            "Linux",
+            "Oracle Pl/SQL",
+            "MS Visual Studio",
+            "Assembler",
+            "Microsoft Visual Studio",
+            "C/C++",
+            "Docker"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Middle Python Data Science/Analytics",
+        "sex": "Мужчина",
+        "age": "27 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 3 года 1 месяц",
+        "tags": [
+            "Python",
+            "SQL",
+            "Pandas",
+            "Machine Learning",
+            "Естественные языки в программировании",
+            "NLTK",
+            "pymystem3",
+            "matplotlib",
+            "MS Excel",
+            "sklearn",
+            "Математическая статистика",
+            "A/B тестирование",
+            "ImageAI",
+            "Машинное зрение",
+            "Распознавание объектов на фото и видео"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Руководитель интернет-проекта",
+        "sex": "Мужчина",
+        "age": "33 года",
+        "salary": "200000 ₽ на руки",
+        "experience": "Опыт работы 13 лет 8 месяцев",
+        "tags": [
+            "Управление проектами",
+            "Ведение переговоров",
+            "MS PowerPoint",
+            "Клиентоориентированность",
+            "Сопровождение клиентов",
+            "Согласование договоров",
+            "Подготовка коммерческих предложений",
+            "Организация учебного процесса",
+            "Оценка потребностей клиентов",
+            "Проведение праздников",
+            "Работа с большим объемом информации",
+            "CRM",
+            "MS Outlook",
+            "Управление отношениями с клиентами",
+            "Ориентация на результат",
+            "Тайм-менеджмент",
+            "Ведение активных клиентов",
+            "Управление персоналом",
+            "Организаторские навыки",
+            "Деловая переписка",
+            "Проведение презентаций",
+            "Поиск и привлечение клиентов",
+            "Работа в команде",
+            "Обучение персонала",
+            "Английский язык",
+            "Пользователь ПК",
+            "Организация мероприятий",
+            "Телефонные переговоры",
+            "Грамотная речь",
+            "Делопроизводство"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Программист Python нейросети, стажер, (удаленно)",
+        "sex": "Мужчина",
+        "age": "53 года",
+        "salary": "190000 ₽ на руки",
+        "experience": "Опыт работы 17 лет 4 месяца",
+        "tags": [
+            "1С БП 20,БП 30,УТ 10, УТ 11",
+            "Python",
+            "Flutter",
+            "SQL",
+            "Git",
+            "Работа с базами данных"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Программист на Python, Ansible (yml)",
+        "sex": "Мужчина",
+        "age": "26 лет",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 6 лет 1 месяц",
+        "tags": [
+            "Коммуникабельность",
+            "Знание компьютера",
+            "Легкая обучаемость",
+            "C#",
+            "Python",
+            "Git",
+            "Linux",
+            "MS Office",
+            "Ubuntu Server"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Junior Python backend разработчик",
+        "sex": "Мужчина",
+        "age": "30 лет",
+        "salary": "120000 ₽ на руки",
+        "experience": "Опыт работы 4 года 10 месяцев",
+        "tags": [
+            "Flask",
+            "Python",
+            "Git",
+            "PostgreSQL",
+            "MySQL",
+            "backend",
+            "SmartAppFramework",
+            "Django Framework"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Ml, python, A/B tests",
+        "sex": "Женщина",
+        "age": "24 года",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 3 года 2 месяца",
+        "tags": [
+            "Исполнительность",
+            "Ответственность",
+            "Неконфликтность",
+            "Желание учиться",
+            "Spark",
+            "sklearn",
+            "ML",
+            "pandas",
+            "Python",
+            "MySQL",
+            "GeoPandas",
+            "Git"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Junior Golang",
+        "sex": "Мужчина",
+        "age": "25 лет",
+        "salary": "110000 ₽ на руки",
+        "experience": "Опыт работы 3 года 9 месяцев",
+        "tags": [
+            "Linux",
+            "Bash",
+            "Python",
+            "C/C++",
+            "Visual Studio C#",
+            "SQL",
+            "Flask",
+            "Selenium WebDriver",
+            "JavaScript",
+            "PlantUML",
+            "Обучаемость",
+            "Java",
+            "ООП",
+            "RPA",
+            "Анализ данных",
+            "Анализ бизнес-процессов",
+            "Программная роботизация",
+            "Извлечение информации",
+            "Интеграция с информационными системами",
+            "REST/API",
+            "SOAP",
+            "Flutter",
+            "FastStream",
+            "Django Rest Framework",
+            "FastAPI",
+            "Go",
+            "Django Framework",
+            "SOLID",
+            "Docker"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Python developer / Разработчик Python",
+        "sex": "Мужчина",
+        "age": "27 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 8 лет 3 месяца",
+        "tags": [
+            "Python",
+            "Bash",
+            "Linux",
+            "Git",
+            "Kibana",
+            "Docker",
+            "ООП",
+            "Django",
+            "Django Rest Framework",
+            "SQL",
+            "Английский язык",
+            "Jira",
+            "Go",
+            "PostgreSQL"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Программист-разработчик",
+        "sex": "Мужчина",
+        "age": "",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 10 лет 6 месяцев",
+        "tags": [
+            "Adobe Photoshop",
+            "MS Excel",
+            "MS Office",
+            "Холодные продажи",
+            "PHP",
+            "Python",
+            "HTML",
+            "CSS",
+            "CMS Wordpress",
+            "Tilda",
+            "SEO"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Инженер разработчик, 3д проектировщик, python backend",
+        "sex": "Мужчина",
+        "age": "25 лет",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 3 года 7 месяцев",
+        "tags": [
+            "Blender 3D",
+            "Компас 3D",
+            "Autodesk Inventor",
+            "Ceramic 3d",
+            "Fusion 360",
+            "3d printing"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Преподаватель",
+        "sex": "Мужчина",
+        "age": "23 года",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 4 года 11 месяцев",
+        "tags": [
+            "C/C++",
+            "Python"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день"
+        ]
+    },
+    {
+        "name": "Тестировщик. Разработчик на языке Python, специалист Data Science.",
+        "sex": "Мужчина",
+        "age": "31 год",
+        "salary": "125000 ₽ на руки",
+        "experience": "Опыт работы 7 лет 8 месяцев",
+        "tags": [
+            "Стрессоустойчивость",
+            "Коммуникабельность",
+            "Исполнительность",
+            "Ответственность",
+            "Пользователь ПК",
+            "Кассовые операции",
+            "Расчеты с покупателями",
+            "Навыки продаж",
+            "Работа с поставщиками",
+            "Internet",
+            "Деловое общение",
+            "Консультирование",
+            "Тестирование",
+            "Тестирование пользовательского интерфейса",
+            "Работа с большим объемом информации",
+            "Модульное тестирование",
+            "Функциональное тестирование"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "волонтерство",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Data Scientist",
+        "sex": "Мужчина",
+        "age": "",
+        "salary": "150000 ₽ на руки",
+        "experience": "Опыт работы 7 лет 3 месяца",
+        "tags": [
+            "Git",
+            "Python",
+            "numpy",
+            "pandas",
+            "tensorflow",
+            "SQL",
+            "Английский язык"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Менеджер проектов",
+        "sex": "Мужчина",
+        "age": "30 лет",
+        "salary": "170000 ₽ на руки",
+        "experience": "Опыт работы 2 года 7 месяцев",
+        "tags": [
+            "Python",
+            "HTML",
+            "Scrum",
+            "REST API",
+            "Управление проектами",
+            "Atlassian Jira",
+            "Разработка нового продукта",
+            "Работа в команде",
+            "SQL",
+            "Руководство коллективом",
+            "Notion"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа",
+            "стажировка"
+        ],
+        "schedule_list": [
+            "полный день",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "IT директор",
+        "sex": "Мужчина",
+        "age": "33 года",
+        "salary": "100000 ₽ на руки",
+        "experience": "Опыт работы 6 лет 6 месяцев",
+        "tags": [
+            "Networking",
+            "Информационные технологии",
+            "Windows 7",
+            "Windows Os",
+            "HTML",
+            "Настройка ПО",
+            "Настройка DNS",
+            "Cisco",
+            "Администрирование серверов Windows",
+            "DHCP",
+            "CSS",
+            "Skype",
+            "Настройка сетевых подключений",
+            "Техническая поддержка",
+            "AWT",
+            "Java",
+            "LabVIEW",
+            "VoIP",
+            "RFID",
+            "NFC",
+            "TCP/IP",
+            "packet tracer",
+            "1C: Бухгалтерия",
+            "bartender",
+            "HTML5",
+            "XML",
+            "JavaScript",
+            "MySQL",
+            "SQL",
+            "ООП"
+        ],
+        "employment_list": [
+            "полная занятость",
+            "частичная занятость",
+            "проектная работа"
+        ],
+        "schedule_list": [
+            "сменный график",
+            "гибкий график",
+            "удаленная работа"
+        ]
+    },
+    {
+        "name": "Data scientist ",
+        "sex": "Мужчина",
+        "age": "28 лет",
+        "salary": "180000 ₽ на руки",
+        "experience": "Опыт работы 6 лет 1 месяц",
+        "tags": [
+            "Python",
+            "Machine Learning",
+            "CV"
+        ],
+        "employment_list": [
+            "полная занятость"
+        ],
+        "schedule_list": [
+            "полный день",
+            "удаленная работа"
         ]
     }
 ]
