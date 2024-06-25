@@ -1,0 +1,587 @@
+[
+    {
+        "title": "Бэкенд разработчик (Python/Django), программист, TON",
+        "name": "Артвелл",
+        "tags": [
+            "TON"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Разработчик Python",
+        "name": "ExecutiveAI",
+        "tags": [],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Частичная занятость, полный день"
+    },
+    {
+        "title": "Python разработчик / программист (Middle Python Developer)",
+        "name": "ООО Финмаркет Софт",
+        "tags": [
+            "Python",
+            "Docker",
+            "PostgreSQL",
+            "SQL",
+            "API",
+            "REST"
+        ],
+        "salary": "от 180000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python Developer",
+        "name": "ООО Холдем",
+        "tags": [
+            "Python",
+            "FastAPI",
+            "MongoDB",
+            "Golang"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python разработчик",
+        "name": "ООО Райтек",
+        "tags": [
+            "Python"
+        ],
+        "salary": "от 165000 ₽ на руки",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, гибкий график"
+    },
+    {
+        "title": "Python-разработчик",
+        "name": "YADRO",
+        "tags": [
+            "Python",
+            "Django",
+            "Redis",
+            "PostgreSQL"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python программист",
+        "name": "Enjoypro",
+        "tags": [
+            "Linux",
+            "Python",
+            "SQL",
+            "Docker"
+        ],
+        "salary": "от 160000 до 230000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python разработчик",
+        "name": "Группа компаний МЕДСИ",
+        "tags": [
+            "Python",
+            "Грамотная речь",
+            "SQLAlchemy",
+            "FastAPI",
+            "Kafka",
+            "Docker",
+            "PostgreSQL",
+            "Kubernetes",
+            "RabbitMQ"
+        ],
+        "salary": "от 200000 до 270000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python-разработчик",
+        "name": "ООО Ритейл-Процессинг",
+        "tags": [
+            "Python",
+            "SQL",
+            "Docker",
+            "Django",
+            "Flask",
+            "Английский — B1 — Средний"
+        ],
+        "salary": "от 200000 до 220000 ₽ на руки",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Middle Python developer",
+        "name": "ООО Селфсек",
+        "tags": [
+            "Python",
+            "Linux",
+            "MySQL",
+            "Nginx",
+            "SQL",
+            "PostgreSQL",
+            "RabbitMQ",
+            "Bash",
+            "Git"
+        ],
+        "salary": "от 150000 до 200000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python-разработчик",
+        "name": "Сбер для экспертов",
+        "tags": [],
+        "salary": "",
+        "experience": "не требуется",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python Developer",
+        "name": "Домклик",
+        "tags": [
+            "Python",
+            "PostgreSQL",
+            "Git",
+            "Docker",
+            "Elasticsearch"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python - разработчик (aiohttp)",
+        "name": "KTS",
+        "tags": [
+            "aiohttp",
+            "PostgreSQL",
+            "RabbitMQ",
+            "MongoDB",
+            "Kubernetes"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Middle Python-разработчик",
+        "name": "AERODISK",
+        "tags": [
+            "Python",
+            "Git",
+            "Linux",
+            "Flask",
+            "Широкий кругозор",
+            "Дружелюбие",
+            "Креативность",
+            "Самокритичность",
+            "Позитивное мышление",
+            "Работа в условиях многозадачности",
+            "FastAPI"
+        ],
+        "salary": "от 140000 до 250000 ₽ на руки",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Ведущий разработчик Python",
+        "name": "билайн: ИТ, Data, Digital",
+        "tags": [],
+        "salary": "",
+        "experience": "более 6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Middle python developer",
+        "name": "ООО Медиапоинт",
+        "tags": [
+            "Python",
+            "aiogram",
+            "telebot",
+            "FastAPI",
+            "RESTful API",
+            "GraphQL",
+            "SQL",
+            "NoSQL",
+            "asyncio",
+            "aiohttp",
+            "Pandas",
+            "NumPy",
+            "Git",
+            "Docker",
+            "Kubernetes",
+            "Kubeflow",
+            "BeautifulSoup",
+            "Scrapy",
+            "Selenium",
+            "Data science",
+            "developer"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python Developer",
+        "name": "АТОМ",
+        "tags": [
+            "Python",
+            "PostgreSQL",
+            "Работа с базами данных",
+            "REST",
+            "API",
+            "Linux",
+            "ETL",
+            "DevOps",
+            "Clickhouse",
+            "ORACLE",
+            "AsyncIO",
+            "FastAPI",
+            "SQLAlchemy",
+            "RDBMS",
+            "Kafka message streaming",
+            "Docker",
+            "K8S",
+            "ELK",
+            "Opentelemetry",
+            "MapReduce"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Разработчик Python/С++",
+        "name": "ООО Облачные Квантовые Технологии",
+        "tags": [],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Senior Python Developer",
+        "name": "Positive Technologies",
+        "tags": [],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python backend developer",
+        "name": "LITE Gallery",
+        "tags": [
+            "Django Framework",
+            "Python",
+            "PostgreSQL",
+            "Kubernetes",
+            "Docker"
+        ],
+        "salary": "от 140000 ₽ на руки",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python-разработчик (Middle+)",
+        "name": "ООО Строительный Двор",
+        "tags": [
+            "Python",
+            "SQL",
+            "FastAPI",
+            "Git",
+            "Scrapy",
+            "Celery",
+            "Django",
+            "Kubernetes",
+            "PostgreSQL",
+            "Jira",
+            "Backend"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Backend Python Developer (Django)",
+        "name": "evrone.ru",
+        "tags": [
+            "Python",
+            "Docker",
+            "Django",
+            "SQL",
+            "NoSQL"
+        ],
+        "salary": "до 380000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Инженер по автотестированию (Python)",
+        "name": "ООО Комита Цифровые Технологии",
+        "tags": [],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "MLOps-инженер/Python-разработчик",
+        "name": "Точка",
+        "tags": [
+            "Python",
+            "ML",
+            "MLOps",
+            "machine learning",
+            "Асинхронное программирование",
+            "Базы данных"
+        ],
+        "salary": "до 400000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Fullstack developer (JS, Python)",
+        "name": "АО АСТ",
+        "tags": [
+            "JavaScript",
+            "Git",
+            "Python",
+            "React",
+            "Redux",
+            "Django"
+        ],
+        "salary": "",
+        "experience": "более 6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Backend Python Developer (FastApi)",
+        "name": "evrone.ru",
+        "tags": [
+            "Python",
+            "SQL",
+            "FastAPI"
+        ],
+        "salary": "до 380000 ₽ на руки",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Automation QA инженер (Python)",
+        "name": "ООО Защищенные Телекоммуникации",
+        "tags": [
+            "Python",
+            "SQL",
+            "API-тестирование",
+            "WEB-тестирование",
+            "веб-приложения",
+            "TMS",
+            "QA"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python developer (Middle/Senior)",
+        "name": "ООО Умскул",
+        "tags": [
+            "Python",
+            "REST",
+            "Django Framework"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python developer на проект \"Ценообразование\"",
+        "name": "Лента, федеральная розничная сеть, Супермаркет",
+        "tags": [],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Риск-аналитик (SQL, Python)",
+        "name": "Центральный банк Российской Федерации",
+        "tags": [
+            "SQL",
+            "Python",
+            "Работа с большим объемом информации",
+            "Анализ рисков",
+            "Риск-менеджмент"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Старший инженер программист Python",
+        "name": "ГК «ХайТэк»",
+        "tags": [
+            "Python",
+            "Linux",
+            "Git",
+            "TensorFlow",
+            "PyTorch",
+            "ONNX",
+            "NumPy"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "AQA Engineer/Инженер автоматизированного тестирования (Python)",
+        "name": "Частное учреждение по цифровизации атомной отрасли «Цифрум»",
+        "tags": [
+            "QA",
+            "Jenkins",
+            "Selenium",
+            "Автоматизированное тестирование",
+            "Docker",
+            "REST",
+            "Python"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Backend Python разработчик (Django)",
+        "name": "Первый Бит",
+        "tags": [
+            "Python",
+            "Django Framework",
+            "Git",
+            "PostgreSQL"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python backend developer (Junior/ Junior+)",
+        "name": "ITOB",
+        "tags": [],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Разработчик на Python в Фемиду",
+        "name": "Яндекс",
+        "tags": [
+            "Python",
+            "Django Framework"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Python-разработчик системы логистических операций в Яндекс.Лавку",
+        "name": "Яндекс",
+        "tags": [],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Системный программист Python/C",
+        "name": "Группа компаний Астра",
+        "tags": [
+            "Python",
+            "С",
+            "Linux",
+            "Bash",
+            "Git"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Senior Python Developer (Checkout)",
+        "name": "Островок",
+        "tags": [
+            "Python",
+            "Django Framework",
+            "PostgreSQL",
+            "Английский язык",
+            "Английский — B1 — Средний"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Тьютор учеников на курсе Python и веб-разработки (создание сайтов)",
+        "name": "ООО ТОЧКА ЗНАНИЙ",
+        "tags": [
+            "Обучение и развитие",
+            "Дистанционное обучение",
+            "Python",
+            "Веб-дизайн"
+        ],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Частичная занятость, удаленная работа"
+    },
+    {
+        "title": "Разработчик Python",
+        "name": "HARTUNG",
+        "tags": [],
+        "salary": "",
+        "experience": "1–3 года",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "Разработчик Python",
+        "name": "ООО ИНФОМЕДИА",
+        "tags": [
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "asyncio",
+            "aiohttp",
+            "SQLAlchemy",
+            "Alembic",
+            "pydantic",
+            "Celery",
+            "RabbitMQ"
+        ],
+        "salary": "",
+        "experience": "более 6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    },
+    {
+        "title": "Python developer / Разработчик python",
+        "name": "ООО IQnergy",
+        "tags": [
+            "Анализ данных"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, полный день"
+    },
+    {
+        "title": "QA Automation Engineer (python)",
+        "name": "ООО СофтМедиаЛаб",
+        "tags": [
+            "Тестирование",
+            "AQA",
+            "Python",
+            "Pytest",
+            "Git",
+            "Nexus"
+        ],
+        "salary": "",
+        "experience": "3–6 лет",
+        "busyness": "Полная занятость, удаленная работа"
+    }
+]
