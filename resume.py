@@ -5,6 +5,7 @@ import json
 import re
 import time
 from urllib.parse import urlencode, urlunparse, urlparse
+import sqlite3
 
 def get_links(keyword, experience_filters=None, schedule_filters=None, education_filters=None, salary_from=None, salary_to=None):
     base_url = 'https://hh.ru/search/resume'
@@ -46,7 +47,7 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
         url += ''.join([f'&schedule={sched}' for sched in schedule_filters])
     if education_filters:
         url += ''.join([f'&education_level={edu}' for edu in education_filters])
-    
+    print(url)
     user_agent = fake_useragent.UserAgent()
     
     try:
@@ -76,7 +77,7 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
                      if not a['href'].startswith('/search/resume')]
             
             #удаление ненужных ссылок
-            for link in links[1:-7]:
+            for link in links:
                 yield link
         except (requests.RequestException, AttributeError) as e:
             print(f'Error during page {page} request: {e}')
@@ -91,11 +92,11 @@ def get_resume(link):
         soup = BeautifulSoup(response.content, "lxml")
         
         name = soup.find(attrs={"class": "resume-block__title-text"}).text if soup.find(attrs={"class": "resume-block__title-text"}) else ''
-        salary = soup.find(attrs={"class": "resume-block__salary"}).text.replace("\u2009", "").replace('\xa0', ' ') if soup.find(attrs={"class": "resume-block__salary"}) else ''
-        tags = [tag.text for tag in soup.find(attrs={"class": "bloko-tag-list"}).find_all(attrs={"class": "bloko-tag__section_text"})] if soup.find(attrs={"class": "bloko-tag-list"}) else []
-        sex = soup.find(attrs={'data-qa': 'resume-personal-gender'}).text if soup.find(attrs={'data-qa': 'resume-personal-gender'}) else ''
-        experience = soup.find(attrs={'class': 'resume-block__title-text_sub'}).text.replace('\xa0', ' ') if soup.find(attrs={'class': 'resume-block__title-text_sub'}) else ''
-        age = soup.find(attrs={'data-qa': 'resume-personal-age'}).text.replace('\xa0', ' ') if soup.find(attrs={'data-qa': 'resume-personal-age'}) else ''
+        salary = soup.find(attrs={"class": "resume-block__salary"}).text.replace("\u2009", "").replace('\xa0', ' ') if soup.find(attrs={"class": "resume-block__salary"}) else 'Не указана'
+        tags = [tag.text for tag in soup.find(attrs={"class": "bloko-tag-list"}).find_all(attrs={"class": "bloko-tag__section_text"})] if soup.find(attrs={"class": "bloko-tag-list"}) else ['Отсутствует']
+        sex = soup.find(attrs={'data-qa': 'resume-personal-gender'}).text if soup.find(attrs={'data-qa': 'resume-personal-gender'}) else 'Не указан'
+        experience = soup.find(attrs={'class': 'resume-block__title-text_sub'}).text.replace('\xa0', ' ').replace('Ключевые навыки','Не указан').replace('Key skills', 'Не указан') if soup.find(attrs={'class': 'resume-block__title-text_sub'}) else ''
+        age = soup.find(attrs={'data-qa': 'resume-personal-age'}).text.replace('\xa0', ' ') if soup.find(attrs={'data-qa': 'resume-personal-age'}) else 'Не указан'
         employment_text = None
         schedule_text = None
 
@@ -134,20 +135,55 @@ def get_resume(link):
     except (requests.RequestException, AttributeError) as e:
         print(f'Error fetching resume from {link}: {e}')
         return None
+    
+def insert_resume(cursor, table_name, resume):
+    cursor.execute(f'''SELECT id FROM {table_name} WHERE name=? AND sex=? AND age=? AND salary=? AND experience=? AND employment=? AND schedule=?''',
+                   (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'], ', '.join(resume['employment_list']), ', '.join(resume['schedule_list'])))
+    if cursor.fetchone() is None:
+        cursor.execute(f'''INSERT INTO {table_name} (name, sex, age, salary, experience, tags, employment, schedule)
+                           VALUES (?, ?, ?, ?, ?, ?, ?, ?)''',
+                       (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'],
+                        ', '.join(resume['tags']), ', '.join(resume['employment_list']), ', '.join(resume['schedule_list'])))
+        return True
+    return False
 
 if __name__ == "__main__": 
     data = []
-    keyword = "python"
-    experience_filters = ["between1And3", "noExperience", "moreThan6", "between3And6"]
-    schedule_filters = ["fullDay", "remote", "flexible", "shift", "flyInFlyOut"]
+    keyword = "сварщик"
+    experience_filters = ["noExperience"]
+    schedule_filters = ["fullDay"]
     education_filters = ["higher", "unfinished_higher", "master", "bachelor", "special_secondary"]
     salary_from = 100000
     salary_to = 200000
-    links = get_links(keyword, experience_filters, schedule_filters, education_filters, salary_from, salary_to)
-    for link in links: # чисто условность, пользователь пишет что-то вместо python
+    # Подключение к базе данных SQLite (если базы нет, она будет создана)
+    conn = sqlite3.connect(f'bd_resume/resume.db')
+    cursor = conn.cursor()
+
+    # Создание таблицы в базе данных SQLite и добавление уникального индекса
+    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
+                    (id INTEGER PRIMARY KEY, name TEXT, sex TEXT, age TEXT, salary TEXT, experience TEXT,
+                    tags TEXT, employment TEXT, schedule TEXT)''')
+
+    # Добавление уникального индекса на сочетание ключевых полей
+    cursor.execute(f'''CREATE UNIQUE INDEX IF NOT EXISTS idx_unique_resume ON {keyword}
+                    (name, sex, age, salary, experience, employment, schedule)''')
+
+    conn.commit()
+
+  #  for link in get_links(keyword, experience_filters, schedule_filters, education_filters, salary_from, salary_to):
+    for link in get_links(keyword):
         resume = get_resume(link)
         if resume:
             data.append(resume)
-            time.sleep(0.5) 
+            time.sleep(0.5)
             with open('resume.json', 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
+
+            with open('resume.json', 'r', encoding='utf-8') as json_file:
+                resume_data = json.load(json_file)
+
+            if insert_resume(cursor, keyword, resume):
+                conn.commit()
+
+conn.close()
+
