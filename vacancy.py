@@ -5,7 +5,7 @@ import json
 import time
 import sqlite3
 
-def get_links(keyword, education_filters=None, salary=None, part_time_filters=None, experience=None):
+def get_links(keyword, education_filters=None, salary=None, schedule_filters=None, experience=None):
     base_url = 'https://hh.ru/search/vacancy?'
 
     params = [
@@ -29,9 +29,9 @@ def get_links(keyword, education_filters=None, salary=None, part_time_filters=No
     elif salary is not None:
         params.append('only_with_salary=false')
 
-    if part_time_filters:
-        for pt in part_time_filters:
-            params.append(f'part_time={pt}')
+    if schedule_filters:
+        for schedule in schedule_filters:
+            params.append(f'schedule={schedule}')
 
     if experience:
         params.append(f'experience={experience}')
@@ -79,9 +79,9 @@ def get_vacancy(link):
         title = soup.find(attrs={"class": "bloko-header-section-1"}).text if soup.find(attrs={"class": "bloko-header-section-1"}) else 'Не указано'
         name = soup.find('a', attrs={'data-qa': 'vacancy-company-name'}).text.replace('\xa0', ' ') if soup.find('a', attrs={'data-qa': 'vacancy-company-name'}) else 'Не указано'
         salary = soup.find('div', attrs={"data-qa": "vacancy-salary"}).text if soup.find('div', attrs={"data-qa": "vacancy-salary"}) else 'Не указана'
-        tags = [tag.text for tag in soup.find(attrs={"class": "vacancy-skill-list--COfJZoDl6Y8AwbMFAh5Z"}).find_all(attrs={"data-qa": "skills-element"})] if soup.find(attrs={"class": "vacancy-skill-list--COfJZoDl6Y8AwbMFAh5Z"}) else []
-        experience = soup.find(attrs={"data-qa": "vacancy-experience"}).text if soup.find(attrs={"data-qa": "vacancy-experience"}) else ''
-        busyness = soup.find(attrs={"data-qa": "vacancy-view-employment-mode"}).text if soup.find(attrs={"data-qa": "vacancy-view-employment-mode"}) else ''
+        tags = [tag.text for tag in soup.find(attrs={"class": "vacancy-skill-list--COfJZoDl6Y8AwbMFAh5Z"}).find_all(attrs={"data-qa": "skills-element"})] if soup.find(attrs={"class": "vacancy-skill-list--COfJZoDl6Y8AwbMFAh5Z"}) else ['Не указаны']
+        experience = soup.find(attrs={"data-qa": "vacancy-experience"}).text if soup.find(attrs={"data-qa": "vacancy-experience"}) else 'Не указан'
+        busyness = soup.find(attrs={"data-qa": "vacancy-view-employment-mode"}).text if soup.find(attrs={"data-qa": "vacancy-view-employment-mode"}) else 'Не указана'
 
         resume = {
             'title': title,
@@ -90,6 +90,7 @@ def get_vacancy(link):
             'salary': salary,
             'experience': experience,
             'busyness': busyness,
+            'link': link
         }
         if title == 'Не указано':
             return None
@@ -100,32 +101,32 @@ def get_vacancy(link):
         return None
 
 def insert_vacancy(cursor, table_name, vacancy):
-    cursor.execute(f'''SELECT id FROM {table_name} WHERE title=? AND company=? AND salary=? AND experience=? AND busyness=?''',
-                   (vacancy['title'], vacancy['name'], vacancy['salary'], vacancy['experience'], vacancy['busyness']))
+    cursor.execute(f'''SELECT id FROM {table_name} WHERE title=? AND company=? AND salary=? AND experience=? AND busyness=? AND link=?''',
+                   (vacancy['title'], vacancy['name'], vacancy['salary'], vacancy['experience'], vacancy['busyness'], vacancy['link']))
     if cursor.fetchone() is None:
-        cursor.execute(f'''INSERT INTO {table_name} (title, company, salary, experience, busyness)
-                           VALUES (?, ?, ?, ?, ?)''',
-                       (vacancy['title'], vacancy['name'], vacancy['salary'], vacancy['experience'], vacancy['busyness']))
+        cursor.execute(f'''INSERT INTO {table_name} (title, company, salary, experience, busyness, link)
+                           VALUES (?, ?, ?, ?, ?, ?)''',
+                       (vacancy['title'], vacancy['name'], vacancy['salary'], vacancy['experience'], vacancy['busyness'], vacancy['link']))
         return True
     return False
 
 if __name__ == "__main__":
     data = []
     keyword = "сварщик"
-    education_filters = ["higher"]
-    salary = 20000
-    part_time_filters = ["employment_part"]
+    education_filters = ["higher", 'special_secondary', 'not_required_or_not_specified']
+    salary = 50000
+    schedule_filters = ["fullDay", "remote", "flexible", "shift"]
+    experience = "between1And3"
 
     conn = sqlite3.connect('bd_vacancy/vacancy.db')
     cursor = conn.cursor()
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
-                       (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT)''')
+                       (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, link TEXT)''')
     cursor.execute(f'''CREATE UNIQUE INDEX IF NOT EXISTS idx_{keyword}_unique 
-                       ON {keyword} (title, company, salary, experience, busyness)''')
+                       ON {keyword} (title, company, salary, experience, busyness, link)''')
 
     conn.commit()
-    #for link in get_links(keyword, education_filters, salary, part_time_filters):
-    for link in get_links(keyword):
+    for link in get_links(keyword, education_filters, salary, schedule_filters, experience):
         vacancy = get_vacancy(link)
         if vacancy:
             data.append(vacancy)

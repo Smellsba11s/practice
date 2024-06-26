@@ -149,7 +149,7 @@ def insert_resume(cursor, table_name, resume):
 
 if __name__ == "__main__": 
     data = []
-    keyword = "сварщик"
+    keyword = "Садовник"
     experience_filters = ["noExperience"]
     schedule_filters = ["fullDay"]
     education_filters = ["higher", "unfinished_higher", "master", "bachelor", "special_secondary"]
