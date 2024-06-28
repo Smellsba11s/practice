@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  bot:
+    build: ./bot
+    volumes:
+      - ./bot:/app
+      - ./backend:/app/backend
+    environment:
+      - TELEGRAM_TOKEN=your_telegram_token_here
+    command: python /app/run.py

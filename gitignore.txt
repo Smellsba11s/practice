@@ -1,0 +1,7 @@
+*.venv
+bot\backend
+*.db
+*__pycache__
+*.log
+*.pot
+*.pyc
