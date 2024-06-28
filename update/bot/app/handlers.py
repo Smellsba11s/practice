@@ -2,6 +2,8 @@ from aiogram import Router, F
 from aiogram.filters.state import StateFilter
 from aiogram.filters import CommandStart
 import logging
+import vacancy_average
+from aiogram import types
 import sys
 import os
 import random
@@ -14,114 +16,174 @@ parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append(parent_dir)
 
 # Теперь можно импортировать модули
-from vacancy import get_vacancy, get_links, insert_vacancy
-from salary_average import calculate_average_salary
+from vacancy import get_vacancy, get_links as get_vacancy_links, insert_vacancy
+from resume import get_resume, get_links as get_resume_links, insert_resume
 from aiogram.types import Message, CallbackQuery
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
 import app.keyboard as kb
+from app.keyboard import inline_parse_count  # Импортируем inline_parse_count напрямую
+
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 
 router = Router()
 
 class Filters(StatesGroup):
     keyword = State()
+    experience = State()
     education = State()
-    salary = State()
+    salary_from = State()
+    salary_to = State()
     schedule = State()
     parse_count = State()
 
 # Пустые списки фильтров
 education_filters = []
 schedule_filters = []
+experience_filters = []
 
-# Начало работы бота
+# Inline клавиатура для выбора "Вакансии" или "Резюме"
+start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Вакансии", callback_data="choose_vacancies")],
+    [InlineKeyboardButton(text="Резюме", callback_data="choose_resume")]
+])
+
+# Обновить хэндлер для команды /start
 @router.message(CommandStart())
-async def cmd_start(message: Message, state: FSMContext):
+async def start_command(message: types.Message):
+    await message.answer("Выберите опцию:", reply_markup=start_keyboard)
+
+# Добавить хэндлер для обработки выбора "Вакансии"
+@router.callback_query(F.data == "choose_vacancies")
+async def choose_vacancies(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.message.answer("Введите запрос для поиска в базе данных:")
     await state.set_state(Filters.keyword)
-    await message.reply("Введите запрос для поиска в базе данных:")
+    await state.update_data(context="vacancies")
+
+# Добавить хэндлер для обработки выбора "Резюме"
+@router.callback_query(F.data == "choose_resume")
+async def choose_resume(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.message.answer("Введите запрос для поиска в базе данных:")
+    await state.set_state(Filters.keyword)
+    await state.update_data(context="resume")
 
 # Обработка ввода запроса
 @router.message(Filters.keyword)
 async def process_keyword(message: Message, state: FSMContext):
     keyword = message.text
     await state.update_data(keyword=keyword)
-    conn = sqlite3.connect('bd_vacancy/vacancy.db')
+    data = await state.get_data()
+    context = data.get("context")
+    conn = sqlite3.connect('bd_vacancy/vacancy.db' if context == "vacancies" else 'bd_resume/resume.db')
     cursor = conn.cursor()
-    
+
     # Проверка наличия таблицы
     cursor.execute(f"SELECT name FROM sqlite_master WHERE type='table' AND name='{keyword}';")
     table_exists = cursor.fetchone()
-    
+
     if table_exists:
         # Получаем количество строк в таблице
         cursor.execute(f"SELECT COUNT(*) FROM {keyword}")
         total_rows = cursor.fetchone()[0]
         await state.update_data(keyword=keyword, total_rows=total_rows)
-        
+
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Выдать 10 случайных результатов", callback_data="random_10")],
             [InlineKeyboardButton(text="Посчитать среднюю зарплату", callback_data="average_salary")],
             [InlineKeyboardButton(text="Запарсить информацию в бд", callback_data="parse_info_db")]
         ])
-        
-        await message.reply(f"Таблица {keyword} найдена\nВсего {total_rows} вакансий\nВыберите действие:", reply_markup=keyboard)
+
+        await message.reply(f"Таблица {keyword} найдена\nВсего {total_rows} записей\nВыберите действие:", reply_markup=keyboard)
     else:
         await message.reply(f"Таблица {keyword} не найдена, давайте запарсим информацию.")
-        await state.set_state(Filters.education)
-        await message.answer("Выберите образование:", reply_markup=kb.inline_education)
-    
+        await state.set_state(Filters.experience)
+        await message.answer("Выберите опыт работы:", reply_markup=kb.inline_experience)
+
     conn.close()
 
-# Обработка выбора образования через инлайн-клавиатуру
+@router.callback_query(F.data == "parse_info_db")
+async def parse_info_db(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.answer()  # Это нужно сделать сразу
+    await state.set_state(Filters.experience)
+    await callback_query.message.answer("Выберите опыт работы:", reply_markup=kb.inline_experience)
+
+@router.callback_query(F.data.startswith("experience_"))
+async def process_inline_experience(callback_query: CallbackQuery, state: FSMContext):
+    if callback_query.data == "experience_next":
+        await state.update_data(experience=experience_filters)
+        await state.set_state(Filters.education)
+        await callback_query.message.answer("Выберите образование:", reply_markup=kb.inline_education)
+    else:
+        experience_map = {
+            "experience_moreThan6": "Больше 6 лет",
+            "experience_between3And6": "Больше 3, но меньше 6 лет",
+            "experience_noExperience": "Нет опыта",
+            "experience_between1And3": "Больше года, меньше 3 лет"
+        }
+        exp_code = callback_query.data.split("_")[1]
+        if exp_code in experience_filters:
+            experience_filters.remove(exp_code)
+        else:
+            experience_filters.append(exp_code)
+
+        selected_experience_text = f"Выбранный опыт работы: {', '.join([experience_map[f'experience_{e}'] for e in experience_filters])}"
+
+        await callback_query.message.edit_text(selected_experience_text, reply_markup=kb.inline_experience)
+        await callback_query.answer('')
+
+@router.callback_query(F.data == "experience_next")
+async def experience_next(callback_query: CallbackQuery, state: FSMContext):
+    await state.update_data(experience=experience_filters)
+    await state.set_state(Filters.education)
+    await callback_query.message.answer("Выберите образование:", reply_markup=kb.inline_education)
+    await callback_query.answer('')
+
 @router.callback_query(F.data.startswith("education_"))
 async def process_inline_education(callback_query: CallbackQuery, state: FSMContext):
     education_map = {
-        "education_higher": "Высшее",
-        "education_special_secondary": "Среднее профессиональное",
-        "education_not_required_or_not_specified": "Не указано или не нужно"
+        "secondary": "Среднее",
+        "special_secondary": "Среднее профессиональное",
+        "unfinished_higher": "Незаконченное высшее",
+        "candidate": "Кандидат наук",
+        "bachelor": "Бакалавр",
+        "master": "Магистр",
+        "higher": "Высшее",
+        "doctor": "Доктор наук"
     }
-    education_text = education_map[callback_query.data]
-    education_filters.clear()
-    education_filters.append(callback_query.data.split("_")[1])
-    await state.update_data(education=education_text)
-    await state.set_state(Filters.salary)
-    await callback_query.message.edit_text(f"Выбрано образование: {education_text}")
-    await callback_query.message.answer("Выберите ЗП или напишите число:", reply_markup=kb.inline_salary)
-    await callback_query.answer('')
 
-# Обработка выбора зарплаты через инлайн-клавиатуру
-@router.callback_query(F.data.startswith("salary_"))
-async def process_inline_salary(callback_query: CallbackQuery, state: FSMContext):
-    salary_map = {
-        "salary_50000": 50000,
-        "salary_100000": 100000,
-        "salary_150000": 150000,
-        "salary_any": "Неважно"
-    }
-    salary_value = salary_map[callback_query.data]
-    data = await state.get_data()
-    if salary_value == "Неважно":
-        data['salary'] = None
+    if callback_query.data == "education_next":
+        await state.update_data(education=education_filters)
+        await state.set_state(Filters.schedule)
+        await callback_query.message.answer("Выберите тип занятости:", reply_markup=kb.inline_schedule)
     else:
-        data['salary'] = salary_value
-    await state.update_data(salary=str(salary_value))
+        education_code = callback_query.data.split("_")[1]
+        if education_code in education_filters:
+            education_filters.remove(education_code)
+        else:
+            education_filters.append(education_code)
+
+        # Добавьте проверку наличия ключа в словаре, чтобы избежать KeyError
+        selected_education_text = f"Выбранное образование: {', '.join([education_map.get(e, 'Неизвестно') for e in education_filters])}"
+
+        await callback_query.message.edit_text(selected_education_text, reply_markup=kb.inline_education)
+        await callback_query.answer('')
+
+
+
+
+@router.callback_query(F.data == "education_next")
+async def education_next(callback_query: CallbackQuery, state: FSMContext):
+    await state.update_data(education=education_filters)
     await state.set_state(Filters.schedule)
-    await callback_query.message.edit_text(f"Выбрана ЗП: {salary_value}")
     await callback_query.message.answer("Выберите тип занятости:", reply_markup=kb.inline_schedule)
     await callback_query.answer('')
 
-# Обработка выбора типа занятости через инлайн-клавиатуру
 @router.callback_query(F.data.startswith("schedule_"))
 async def process_inline_schedule(callback_query: CallbackQuery, state: FSMContext):
     if callback_query.data == "schedule_next":
-        await state.set_state(Filters.parse_count)
-        keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="10", callback_data="parse_10")],
-            [InlineKeyboardButton(text="25", callback_data="parse_25")],
-            [InlineKeyboardButton(text="50", callback_data="parse_50")]
-        ])
-        await callback_query.message.edit_text("Выберите сколько запарсить:", reply_markup=keyboard)
+        await state.update_data(schedule=schedule_filters)
+        await state.set_state(Filters.salary_from)
+        await callback_query.message.answer("Выберите нижний предел зарплаты или напишите свой:", reply_markup=kb.inline_salary_from)
     else:
         schedule_map = {
             "schedule_fullDay": "Полный день",
@@ -130,73 +192,88 @@ async def process_inline_schedule(callback_query: CallbackQuery, state: FSMConte
             "schedule_shift": "Сменный график",
             "schedule_flyInFlyOut": "Вахтовая работа"
         }
-        schedule_text = schedule_map[callback_query.data]
-        filter_value = callback_query.data.split("_")[1]
-        if filter_value in schedule_filters:
-            schedule_filters.remove(filter_value)
+        schedule_code = callback_query.data.split("_")[1]
+        if schedule_code in schedule_filters:
+            schedule_filters.remove(schedule_code)
         else:
-            schedule_filters.append(filter_value)
-        await callback_query.message.reply(f"Текущие фильтры занятости: {', '.join(schedule_filters)}")
+            schedule_filters.append(schedule_code)
+
+        selected_schedule_text = f"Текущие фильтры занятости: {', '.join([schedule_map[f'schedule_{s}'] for s in schedule_filters])}"
+
+        await callback_query.message.edit_text(selected_schedule_text, reply_markup=kb.inline_schedule)
+        await callback_query.answer('')
+
+# Обработка выбора нижнего предела зарплаты через инлайн-клавиатуру
+@router.callback_query(F.data.startswith("salary_from_"))
+async def process_inline_salary_from(callback_query: CallbackQuery, state: FSMContext):
+    salary_from_map = {
+        "salary_from_25000": 25000,
+        "salary_from_50000": 50000,
+        "salary_from_100000": 100000,
+        "salary_from_any": None
+    }
+    salary_from_value = salary_from_map[callback_query.data]
+    await state.update_data(salary_from=salary_from_value)
+    await state.set_state(Filters.salary_to)
+    await callback_query.message.edit_text("Выберите верхний предел зарплаты или напишите свой:", reply_markup=kb.inline_salary_to)
     await callback_query.answer('')
 
-# Выдать 10 случайных результатов
-@router.callback_query(F.data == "random_10")
-async def random_10(callback_query: CallbackQuery, state: FSMContext):
-    data = await state.get_data()
-    keyword = data.get('keyword')
-    conn = sqlite3.connect('bd_vacancy/vacancy.db')
-    cursor = conn.cursor()
-
-    cursor.execute(f"SELECT * FROM {keyword}")
-    rows = cursor.fetchall()
-    conn.close()
-
-    random_rows = random.sample(rows, min(10, len(rows)))
-
-    for row in random_rows:
-        formatted_vacancy = (
-            f"Профессия: {row[1]}\n"
-            f"Название компании: {row[2]}\n"
-            f"Зарплата: {row[3]}\n"
-            f"Опыт работы: {row[4]}\n"
-            f"Занятость: {row[5]}\n"
-            f"Образование: {row[6]}\n"
-            f"Ссылка: {row[7]}"
-        )
-        await callback_query.message.reply(formatted_vacancy)
-
+@router.callback_query(F.data == "salary_from_next")
+async def salary_from_next(callback_query: CallbackQuery, state: FSMContext):
+    await state.update_data(salary_from=salary_from_value)
+    await state.set_state(Filters.salary_to)
+    await callback_query.message.answer("Выберите верхний предел зарплаты или напишите свой:", reply_markup=kb.inline_salary_to)
     await callback_query.answer('')
 
-# Посчитать среднюю зарплату
-@router.callback_query(F.data == "average_salary")
-async def average_salary(callback_query: CallbackQuery, state: FSMContext):
-    data = await state.get_data()
-    keyword = data.get('keyword')
-    average_salary = calculate_average_salary(keyword)
-    await callback_query.message.reply(f"Средняя зарплата по запросу {keyword}: {average_salary:.2f} рублей")
+@router.callback_query(F.data.startswith("salary_to_"))
+async def process_inline_salary_to(callback_query: CallbackQuery, state: FSMContext):
+    salary_to_map = {
+        "salary_to_50000": 50000,
+        "salary_to_75000": 75000,
+        "salary_to_125000": 125000,
+        "salary_to_any": None
+    }
+    salary_to_value = salary_to_map[callback_query.data]
+    await state.update_data(salary_to=salary_to_value)
+    await state.set_state(Filters.parse_count)
+    # Используйте напрямую импортированный inline_parse_count
+    await callback_query.message.edit_text("Выберите количество записей для парсинга:", reply_markup=inline_parse_count)
     await callback_query.answer('')
 
-# Обработка нажатия кнопки "Запарсить информацию в бд"
-@router.callback_query(F.data == "parse_info_db")
-async def parse_info_db(callback_query: CallbackQuery, state: FSMContext):
-    await state.set_state(Filters.education)
-    await callback_query.message.edit_text("Выберите образование:", reply_markup=kb.inline_education)
+@router.callback_query(F.data == "salary_to_next")
+async def salary_to_next(callback_query: CallbackQuery, state: FSMContext):
+    await state.update_data(salary_to=salary_to_value)
+    await state.set_state(Filters.parse_count)
+    await callback_query.message.answer("Выберите количество записей для парсинга:", reply_markup=inline_parse_count)
     await callback_query.answer('')
 
-# Обработка ввода количества вакансий для парсинга через инлайн-клавиатуру
+# Обработка выбора количества записей для парсинга через инлайн-клавиатуру
 @router.callback_query(F.data.startswith("parse_"))
-async def parse_vacancies(callback_query: CallbackQuery, state: FSMContext):
+async def parse_vacancies_or_resumes(callback_query: CallbackQuery, state: FSMContext):
     await callback_query.answer()  # Это нужно сделать сразу
-    count = int(callback_query.data.split('_')[1])
-    data = await state.get_data()
-    keyword = data.get('keyword')
+
+    try:
+        count = int(callback_query.data.split('_')[1])
+    except (IndexError, ValueError):
+        await callback_query.message.reply("Ошибка: некорректное значение для количества записей.")
+        return
+
     await state.update_data(parse_count=count)
 
+    data = await state.get_data()
+    keyword = data.get('keyword')
+    context = data.get("context")
+
     await callback_query.message.reply("Начинаем парсить информацию...")
-    await perform_parsing(callback_query.message, state, keyword, count)
+
+    if context == "vacancies":
+        await perform_parsing_vacancies(callback_query.message, state, keyword, count)
+    elif context == "resume":
+        await perform_parsing_resumes(callback_query.message, state, keyword, count)
+
     await callback_query.message.reply("Парсинг завершен. Хотите вернуться к началу?")
 
-async def perform_parsing(message: Message, state: FSMContext, keyword: str, count: int):
+async def perform_parsing_vacancies(message: Message, state: FSMContext, keyword: str, count: int):
     data = await state.get_data()
     offset = data.get('offset', 0)
     shown_links = data.get('shown_links', set())
@@ -207,11 +284,11 @@ async def perform_parsing(message: Message, state: FSMContext, keyword: str, cou
     cursor = conn.cursor()
 
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
-               (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
+    (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
 
     results_count = 0
 
-    for link in get_links(keyword, education_filters, data.get('salary'), schedule_filters, offset):
+    for link in get_vacancy_links(keyword, education_filters, data.get('salary'), schedule_filters, offset):
         if results_count >= count:
             break
 
@@ -247,7 +324,7 @@ async def perform_parsing(message: Message, state: FSMContext, keyword: str, cou
 
     if results_count > 0:
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Далее", callback_data="next_page")],
+            [InlineKeyboardButton(text="Далее", callback_data="next_page_vacancies")],
             [InlineKeyboardButton(text="Назад", callback_data="restart")]
         ])
         await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
@@ -255,14 +332,82 @@ async def perform_parsing(message: Message, state: FSMContext, keyword: str, cou
         await message.reply("Больше вакансий не найдено.")
         await state.clear()
 
-@router.callback_query(F.data == "next_page")
-async def handle_next_page(callback_query: CallbackQuery, state: FSMContext):
+async def perform_parsing_resumes(message: Message, state: FSMContext, keyword: str, count: int):
+    data = await state.get_data()
+    offset = data.get('offset', 0)
+    shown_links = data.get('shown_links', set())
+
+    logging.info(f"Полученные фильтры: keyword={keyword}, education_filters={education_filters}, schedule_filters={schedule_filters}, experience_filters={experience_filters}, salary_from={data.get('salary_from')}, salary_to={data.get('salary_to')}, offset={offset}")
+
+    conn = sqlite3.connect('bd_resume/resume.db')
+    cursor = conn.cursor()
+
+    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
+    (id INTEGER PRIMARY KEY, name TEXT, sex TEXT, age TEXT, salary TEXT, experience TEXT, tags TEXT, employment TEXT, schedule TEXT, link TEXT)''')
+
+    results_count = 0
+
+    for link in get_resume_links(keyword, experience_filters, schedule_filters, education_filters, data.get('salary_from'), data.get('salary_to')):
+        if results_count >= count:
+            break
+
+        if link in shown_links:
+            continue  # Пропустить уже показанные ссылки
+
+        logging.info(f"Парсим резюме по ссылке: {link}")
+
+        resume = get_resume(link)
+        if resume:
+            formatted_resume = (
+                f"Имя: {resume['name']}\n"
+                f"Пол: {resume['sex']}\n"
+                f"Возраст: {resume['age']}\n"
+                f"Зарплата: {resume['salary']}\n"
+                f"Опыт работы: {resume['experience']}\n"
+                f"Тэги: {', '.join(resume['tags'])}\n"
+                f"Занятость: {', '.join(resume['employment_list'])}\n"
+                f"График работы: {', '.join(resume['schedule_list'])}\n"
+                f"Ссылка: {resume['link']}"
+            )
+            await message.reply(formatted_resume)
+
+            insert_resume(cursor, keyword, resume)
+            conn.commit()
+
+            shown_links.add(link)  # Добавить ссылку в список показанных
+            results_count += 1
+
+    conn.close()
+
+    new_offset = offset + 1  # Увеличиваем смещение на 1, чтобы перейти на следующую страницу
+    await state.update_data(offset=new_offset, shown_links=shown_links)  # Обновить данные состояния
+
+    if results_count > 0:
+        keyboard = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="Далее", callback_data="next_page_resumes")],
+            [InlineKeyboardButton(text="Назад", callback_data="restart")]
+        ])
+        await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
+    else:
+        await message.reply("Больше резюме не найдено.")
+        await state.clear()
+
+@router.callback_query(F.data == "next_page_vacancies")
+async def handle_next_page_vacancies(callback_query: CallbackQuery, state: FSMContext):
     await callback_query.answer()  # Это нужно сделать сразу
     data = await state.get_data()
     keyword = data.get('keyword')
     salary = data.get('salary')
-    
     await display_vacancies(callback_query.message, state, keyword, salary)
+
+@router.callback_query(F.data == "next_page_resumes")
+async def handle_next_page_resumes(callback_query: CallbackQuery, state: FSMContext):
+    await callback_query.answer()  # Это нужно сделать сразу
+    data = await state.get_data()
+    keyword = data.get('keyword')
+    salary_from = data.get('salary_from')
+    salary_to = data.get('salary_to')
+    await display_resumes(callback_query.message, state, keyword, salary_from, salary_to)
 
 async def display_vacancies(message: Message, state: FSMContext, keyword: str, salary: int):
     data = await state.get_data()
@@ -275,11 +420,11 @@ async def display_vacancies(message: Message, state: FSMContext, keyword: str, s
     cursor = conn.cursor()
 
     cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
-               (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
+    (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
 
     results_count = 0
 
-    for link in get_links(keyword, education_filters, salary, schedule_filters, offset):
+    for link in get_vacancy_links(keyword, education_filters, salary, schedule_filters, offset):
         if results_count >= 10:
             break
 
@@ -315,7 +460,7 @@ async def display_vacancies(message: Message, state: FSMContext, keyword: str, s
 
     if results_count > 0:
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Далее", callback_data="next_page")],
+            [InlineKeyboardButton(text="Далее", callback_data="next_page_vacancies")],
             [InlineKeyboardButton(text="Назад", callback_data="restart")]
         ])
         await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
@@ -323,8 +468,104 @@ async def display_vacancies(message: Message, state: FSMContext, keyword: str, s
         await message.reply("Больше вакансий не найдено.")
         await state.clear()
 
+async def display_resumes(message: Message, state: FSMContext, keyword: str, salary_from: int, salary_to: int):
+    data = await state.get_data()
+    offset = data.get('offset', 0)
+    shown_links = data.get('shown_links', set())
+
+    logging.info(f"Полученные фильтры: keyword={keyword}, education_filters={education_filters}, schedule_filters={schedule_filters}, experience_filters={experience_filters}, salary_from={salary_from}, salary_to={salary_to}, offset={offset}")
+
+    conn = sqlite3.connect('bd_resume/resume.db')
+    cursor = conn.cursor()
+    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
+    (id INTEGER PRIMARY KEY, name TEXT, sex TEXT, age TEXT, salary TEXT, experience TEXT, tags TEXT, employment TEXT, schedule TEXT, link TEXT)''')
+
+    results_count = 0
+
+    for link in get_resume_links(keyword, experience_filters, schedule_filters, education_filters, salary_from, salary_to):
+        if results_count >= 10:
+            break
+
+        if link in shown_links:
+            continue  # Пропустить уже показанные ссылки
+
+        logging.info(f"Парсим резюме по ссылке: {link}")
+
+        resume = get_resume(link)
+        if resume:
+            formatted_resume = (
+                f"Имя: {resume['name']}\n"
+                f"Пол: {resume['sex']}\n"
+                f"Возраст: {resume['age']}\n"
+                f"Зарплата: {resume['salary']}\n"
+                f"Опыт работы: {resume['experience']}\n"
+                f"Тэги: {', '.join(resume['tags'])}\n"
+                f"Занятость: {', '.join(resume['employment_list'])}\n"
+                f"График работы: {', '.join(resume['schedule_list'])}\n"
+                f"Ссылка: {resume['link']}"
+            )
+            await message.reply(formatted_resume)
+
+            insert_resume(cursor, keyword, resume)
+            conn.commit()
+
+            shown_links.add(link)  # Добавить ссылку в список показанных
+            results_count += 1
+
+    conn.close()
+
+    new_offset = offset + 1  # Увеличиваем смещение на 1, чтобы перейти на следующую страницу
+    await state.update_data(offset=new_offset, shown_links=shown_links)  # Обновить данные состояния
+
+    if results_count > 0:
+        keyboard = InlineKeyboardMarkup(inline_keyboard=[
+            [InlineKeyboardButton(text="Далее", callback_data="next_page_resumes")],
+            [InlineKeyboardButton(text="Назад", callback_data="restart")]
+        ])
+        await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
+    else:
+        await message.reply("Больше резюме не найдено.")
+        await state.clear()
+
 @router.callback_query(F.data == "restart")
 async def handle_restart(callback_query: CallbackQuery, state: FSMContext):
     await state.clear()
     await callback_query.answer('')
     await callback_query.message.answer("Начнем заново. Введите /start чтобы начать.")
+
+@router.callback_query(F.data == "random_10")
+async def handle_random_10(callback_query: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    keyword = data.get('keyword')
+    context = data.get("context")
+    conn = sqlite3.connect('bd_vacancy/vacancy.db' if context == "vacancies" else 'bd_resume/resume.db')
+    cursor = conn.cursor()
+
+    cursor.execute(f"SELECT * FROM {keyword} ORDER BY RANDOM() LIMIT 10;")
+    results = cursor.fetchall()
+
+    for result in results:
+        formatted_result = f"Результат: {result}"
+        await callback_query.message.reply(formatted_result)
+
+    conn.close()
+    await callback_query.answer('')
+
+@router.callback_query(F.data == "average_salary")
+async def handle_average_salary(callback_query: CallbackQuery, state: FSMContext):
+    data = await state.get_data()
+    keyword = data.get('keyword')
+    context = data.get("context")
+    
+    if context == "vacancies":
+        # Используем функцию из vacancy_average для подсчета средней зарплаты
+        average_salary = vacancy_average.calculate_average_salary(keyword)
+        if average_salary is not None:
+            await callback_query.message.reply(f"Средняя зарплата: {average_salary:.2f} рублей")
+        else:
+            await callback_query.message.reply("Нет данных о зарплатах для расчета.")
+    elif context == "resume":
+        await callback_query.message.reply("Функция подсчета средней зарплаты для резюме не реализована.")
+
+    await callback_query.answer('')
+

@@ -1,50 +1,33 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 
-# Клавиатура для выбора образования
-education = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='Высшее')], 
-    [KeyboardButton(text='Среднее профессиональное')], 
-    [KeyboardButton(text='Не указано или не нужно')]
-],
-                     resize_keyboard=True,
-                     input_field_placeholder='Выберите образование.')
-
-# Клавиатура для выбора зарплаты
-salary = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='50000')], 
-    [KeyboardButton(text='100000')], 
-    [KeyboardButton(text='150000')],
-    [KeyboardButton(text='Не важно')]
-],
-                     resize_keyboard=True,
-                     input_field_placeholder='Выберите минимальную зарплату.')
-
-# Клавиатура для выбора типа занятости
-schedule = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton(text='Полный день')], 
-    [KeyboardButton(text='Удаленная работа')], 
-    [KeyboardButton(text='Гибкий график')],
-    [KeyboardButton(text='Сменный график')], 
-    [KeyboardButton(text='Вахтовая работа')], 
-    [KeyboardButton(text='далее')]
-],
-                     resize_keyboard=True,
-                     input_field_placeholder='Выберите тип занятости.')
-
 # Inline клавиатура для выбора образования
 inline_education = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
+    [InlineKeyboardButton(text="Среднее", callback_data="education_secondary")],
     [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary")],
-    [InlineKeyboardButton(text="Не указано или не нужно", callback_data="education_not_required_or_not_specified")]
+    [InlineKeyboardButton(text="Незаконченное высшее", callback_data="education_unfinished_higher")],
+    [InlineKeyboardButton(text="Кандидат наук", callback_data="education_candidate")],
+    [InlineKeyboardButton(text="Бакалавр", callback_data="education_bachelor")],
+    [InlineKeyboardButton(text="Магистр", callback_data="education_master")],
+    [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
+    [InlineKeyboardButton(text="Доктор наук", callback_data="education_doctor")],
+    [InlineKeyboardButton(text="Далее", callback_data="education_next")]
 ])
 
-# Inline клавиатура для выбора зарплаты
-inline_salary = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="50000", callback_data="salary_50000")],
-    [InlineKeyboardButton(text="100000", callback_data="salary_100000")],
-    [InlineKeyboardButton(text="150000", callback_data="salary_150000")],
-    [InlineKeyboardButton(text="Не важно", callback_data="salary_any")]
+# Inline клавиатура для выбора зарплаты (нижний предел)
+inline_salary_from = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="25000", callback_data="salary_from_25000")],
+    [InlineKeyboardButton(text="50000", callback_data="salary_from_50000")],
+    [InlineKeyboardButton(text="100000", callback_data="salary_from_100000")],
+    [InlineKeyboardButton(text="Не важно", callback_data="salary_from_any")]
+])
+
+# Inline клавиатура для выбора зарплаты (верхний предел)
+inline_salary_to = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="50000", callback_data="salary_to_50000")],
+    [InlineKeyboardButton(text="75000", callback_data="salary_to_75000")],
+    [InlineKeyboardButton(text="125000", callback_data="salary_to_125000")],
+    [InlineKeyboardButton(text="Не важно", callback_data="salary_to_any")]
 ])
 
 # Inline клавиатура для выбора типа занятости
@@ -57,11 +40,69 @@ inline_schedule = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Далее", callback_data="schedule_next")]
 ])
 
-# Inline клавиатура для списка автомобилей (пример)
-cars = ['Tesla', 'Mercedes', 'BMW']
+# Inline клавиатура для выбора опыта работы
+inline_experience = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Больше 6 лет", callback_data="experience_moreThan6")],
+    [InlineKeyboardButton(text="Больше 3, но меньше 6 лет", callback_data="experience_between3And6")],
+    [InlineKeyboardButton(text="Нет опыта", callback_data="experience_noExperience")],
+    [InlineKeyboardButton(text="Больше года, меньше 3 лет", callback_data="experience_between1And3")],
+    [InlineKeyboardButton(text="Далее", callback_data="experience_next")]
+])
 
-async def inline_cars():
-    keyboard = InlineKeyboardBuilder()
-    for car in cars:
-        keyboard.add(InlineKeyboardButton(text=car, callback_data=f"car_{car.lower()}"))
-    return keyboard.adjust(2).as_markup()
+# Inline клавиатура для выбора количества записей для парсинга
+inline_parse_count = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="10", callback_data="parse_10")],
+    [InlineKeyboardButton(text="25", callback_data="parse_25")],
+    [InlineKeyboardButton(text="50", callback_data="parse_50")]
+])
+
+# Inline клавиатура для выбора "Вакансии" или "Резюме"
+start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Вакансии", callback_data="choose_vacancies")],
+    [InlineKeyboardButton(text="Резюме", callback_data="choose_resume")]
+])
+
+inline_education = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary")],
+    [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
+    [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified")],
+    [InlineKeyboardButton(text="Далее", callback_data="education_next")]
+])
+
+inline_salary_from = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="25000", callback_data="salary_from_25000")],
+    [InlineKeyboardButton(text="50000", callback_data="salary_from_50000")],
+    [InlineKeyboardButton(text="100000", callback_data="salary_from_100000")],
+    [InlineKeyboardButton(text="Неважно", callback_data="salary_from_any")]
+])
+
+inline_schedule = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Полный день", callback_data="schedule_fullDay")],
+    [InlineKeyboardButton(text="Удаленная работа", callback_data="schedule_remote")],
+    [InlineKeyboardButton(text="Гибкий график", callback_data="schedule_flexible")],
+    [InlineKeyboardButton(text="Сменный график", callback_data="schedule_shift")],
+    [InlineKeyboardButton(text="Далее", callback_data="schedule_next")]
+])
+
+inline_education_vacancies = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary_vacancies")],
+    [InlineKeyboardButton(text="Высшее", callback_data="education_higher_vacancies")],
+    [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified_vacancies")],
+    [InlineKeyboardButton(text="Далее", callback_data="education_next_vacancies")]
+])
+
+inline_salary_from_vacancies = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="25000", callback_data="salary_from_25000_vacancies")],
+    [InlineKeyboardButton(text="50000", callback_data="salary_from_50000_vacancies")],
+    [InlineKeyboardButton(text="100000", callback_data="salary_from_100000_vacancies")],
+    [InlineKeyboardButton(text="Неважно", callback_data="salary_from_any_vacancies")]
+])
+
+inline_schedule_vacancies = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Полный день", callback_data="schedule_fullDay_vacancies")],
+    [InlineKeyboardButton(text="Удаленная работа", callback_data="schedule_remote_vacancies")],
+    [InlineKeyboardButton(text="Гибкий график", callback_data="schedule_flexible_vacancies")],
+    [InlineKeyboardButton(text="Сменный график", callback_data="schedule_shift_vacancies")],
+    [InlineKeyboardButton(text="Далее", callback_data="schedule_next_vacancies")]
+])
+

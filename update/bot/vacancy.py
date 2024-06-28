@@ -4,7 +4,7 @@ import fake_useragent
 import sqlite3
 import time
 
-def get_links(keyword, education_filters=None, salary=None, schedule_filters=None, experience=None, offset=0):
+def get_links(keyword, education_filters=None, salary_to=None, schedule_filters=None, experience=None, offset=0):
     base_url = 'https://hh.ru/search/vacancy?'
 
     params = [
@@ -21,11 +21,11 @@ def get_links(keyword, education_filters=None, salary=None, schedule_filters=Non
     if education_filters:
         params.extend(f'education={edu}' for edu in education_filters)
 
-    if salary:
-        params.append(f'salary={salary}')
-        params.append('only_with_salary=true')
-    elif salary is not None:
-        params.append('only_with_salary=false')
+    if salary_to:
+        params.append(f'salary_to={salary_to}')
+        params.append('only_with_salary_to=true')
+    elif salary_to is not None:
+        params.append('only_with_salary_to=false')
 
     if schedule_filters:
         params.extend(f'schedule={schedule}' for schedule in schedule_filters)
