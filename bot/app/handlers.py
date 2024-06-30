@@ -7,6 +7,7 @@ from aiogram import types
 import random
 import sqlite3
 
+
 from backend.resume import get_resume, get_links as get_resume_links, insert_resume
 from backend.vacancy import get_vacancy, get_links as get_vacancy_links, insert_vacancy
 from backend import vacancy_average
@@ -41,6 +42,11 @@ start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Вакансии", callback_data="choose_vacancies")],
     [InlineKeyboardButton(text="Резюме", callback_data="choose_resume")]
 ])
+
+@router.message(lambda message: message.sticker is not None)
+async def send_same_sticker(message: Message):
+    sticker = message.sticker
+    await message.answer_sticker(sticker.file_id)
 
 # хэндлер для команды /start
 @router.message(CommandStart())
