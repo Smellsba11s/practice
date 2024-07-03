@@ -34,6 +34,7 @@ def get_links(keyword, education_filters=None, salary_to=None, schedule_filters=
         params.append(f'experience={experience}')
 
     url = base_url + '&'.join(params)
+    print(url)
     user_agent = fake_useragent.UserAgent()
 
     try:
@@ -126,29 +127,3 @@ def insert_vacancy(cursor, table_name, vacancy):
                        (vacancy['title'], vacancy['name'], vacancy['salary'], vacancy['experience'], vacancy['busyness'], vacancy['education'], vacancy['link']))
         return True
     return False
-
-if __name__ == "__main__":
-    data = []
-    keyword = "сварщик"
-    education_filters = ['not_required_or_not_specified']
-    salary = 50000
-    schedule_filters = ["fullDay", "remote", "flexible", "shift"]
-    experience = "between1And3"
-
-    conn = sqlite3.connect('bd_vacancy/vacancy.db')
-    cursor = conn.cursor()
-    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
-                       (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
-    cursor.execute(f'''CREATE UNIQUE INDEX IF NOT EXISTS idx_{keyword}_unique 
-                       ON {keyword} (title, company, salary, experience, busyness, education, link)''')
-
-    conn.commit()
-    for link in get_links(keyword, education_filters, salary, schedule_filters, experience, conn=conn):
-        vacancy = get_vacancy(link, education_filters)
-        if vacancy:
-            data.append(vacancy)
-            insert_vacancy(cursor, keyword, vacancy)
-            conn.commit()
-            time.sleep(0.5)
-
-    conn.close()

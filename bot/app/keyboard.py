@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # Inline клавиатура для выбора образования
-inline_education = InlineKeyboardMarkup(inline_keyboard=[
+inline_education_resume = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Среднее", callback_data="education_secondary")],
     [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary")],
     [InlineKeyboardButton(text="Незаконченное высшее", callback_data="education_unfinished_higher")],
@@ -10,6 +10,12 @@ inline_education = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Магистр", callback_data="education_master")],
     [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
     [InlineKeyboardButton(text="Доктор наук", callback_data="education_doctor")],
+    [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified")],
+    [InlineKeyboardButton(text="Далее", callback_data="education_next")]
+])
+inline_education_vacancy = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary")],
+    [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
     [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified")],
     [InlineKeyboardButton(text="Далее", callback_data="education_next")]
 ])
@@ -54,4 +60,10 @@ inline_parse_count = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="10", callback_data="parse_10")],
     [InlineKeyboardButton(text="25", callback_data="parse_25")],
     [InlineKeyboardButton(text="50", callback_data="parse_50")]
+])
+
+# Inline клавиатура для выбора "Вакансии" или "Резюме"
+start_keyboard = InlineKeyboardMarkup(inline_keyboard=[
+    [InlineKeyboardButton(text="Вакансии", callback_data="choose_vacancies")],
+    [InlineKeyboardButton(text="Резюме", callback_data="choose_resume")]
 ])

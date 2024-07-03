@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import fake_useragent
 import json
+import logging
 import re
 import time
 from urllib.parse import urlencode, urlunparse, urlparse
@@ -141,14 +142,36 @@ def get_resume(link):
         print(f'Error fetching resume from {link}: {e}')
         return None
     
-def insert_resume(cursor, keyword, resume):
-    cursor.execute(f'''SELECT id FROM {keyword} WHERE name=? AND sex=? AND age=? AND salary=? AND experience=? AND tags=? AND employment=? AND schedule=? AND link=?''',
-                   (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'], ', '.join(resume['tags']), ', '.join(resume['employment_list']), ', '.join(resume['schedule_list']), resume['link']))
-    if cursor.fetchone() is None:
-        cursor.execute(f'''INSERT INTO {keyword} (name, sex, age, salary, experience, tags, employment, schedule, link)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
-                       (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'],
-                        ', '.join(resume['tags']), ', '.join(resume['employment_list']), ', '.join(resume['schedule_list']), resume['link']))
-        return True
-    return False
 
+def insert_resume(cursor, keyword, resume):
+    
+    try:
+        cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword} (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            sex TEXT,
+            age TEXT,
+            salary TEXT,
+            experience TEXT,
+            tags TEXT,
+            employment TEXT,
+            schedule TEXT,
+            link TEXT
+        )''')
+        
+
+        cursor.execute(f'''SELECT id FROM {keyword} WHERE name=? AND sex=? AND age=? AND salary=? AND experience=? AND tags=? AND employment=? AND schedule=? AND link=?''',
+                       (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'], ', '.join(resume['tags']), ', '.join(resume['employment_list']), ', '.join(resume['schedule_list']), resume['link']))
+        if cursor.fetchone() is None:
+
+            cursor.execute(f'''INSERT INTO {keyword} (name, sex, age, salary, experience, tags, employment, schedule, link)
+                               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)''',
+                           (resume['name'], resume['sex'], resume['age'], resume['salary'], resume['experience'],
+                            ', '.join(resume['tags']), ', '.join(resume['employment_list']), ', '.join(resume['schedule_list']), resume['link']))
+            return True
+        else:
+            logging.info(f"Resume already exists in the database: {resume['link']}")
+            return False
+    except Exception as e:
+        logging.error(f"Error inserting resume: {e}")
+        return False
