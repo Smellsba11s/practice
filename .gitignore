@@ -1,6 +1,5 @@
 *.venv
 bot\backend
-bot\config.py
 *.db
 *__pycache__
 *.log

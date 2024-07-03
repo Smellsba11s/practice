@@ -1,39 +1,28 @@
 #docker-compose up --build
 from aiogram import Router, F
-from aiogram.filters.state import StateFilter
 from aiogram.filters import CommandStart
-import logging
 from aiogram import types
-import random
+from aiogram.types import Message, CallbackQuery
+from aiogram.fsm.context import FSMContext
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
+
+import app.handlers_vacancy as vac
+import app.handlers_resume as res
+from app.Class import Filters
+import app.keyboard as kb
+
+
+from backend import vacancy_average
 import sqlite3
 
 
-from backend.resume import get_resume, get_links as get_resume_links, insert_resume
-from backend.vacancy import get_vacancy, get_links as get_vacancy_links, insert_vacancy
-from backend import vacancy_average
-from aiogram.types import Message, CallbackQuery
-from aiogram.fsm.state import StatesGroup, State
-from aiogram.fsm.context import FSMContext
-import app.keyboard as kb
-
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
 router = Router()
 #пустые списки фильтров
+
 education_filters = []
 schedule_filters = []
 experience_filters = []
-
-class Filters(StatesGroup):
-    alt_keyword = State()
-    keyword = State()
-    context = State()
-    experience = State()
-    education = State()
-    salary_from = State()
-    salary_to = State()
-    schedule = State()
-    parse_count = State()
 
 
 
@@ -51,21 +40,7 @@ async def start_command(message: types.Message, state: FSMContext):
     experience_filters.clear()
     await message.answer("Выберите опцию:", reply_markup= kb.start_keyboard)
 
-# хэндлер для обработки выбора "Вакансии"
-@router.callback_query(F.data == "choose_vacancies")
-async def choose_vacancies(callback_query: CallbackQuery, state: FSMContext):
-    await callback_query.answer('')
-    await callback_query.message.answer("Введите запрос для поиска в базе данных:")
-    await state.set_state(Filters.keyword)
-    await state.update_data(context="vacancies")
 
-# хэндлер для обработки выбора "Резюме"
-@router.callback_query(F.data == "choose_resume")
-async def choose_resume(callback_query: CallbackQuery, state: FSMContext):
-    await callback_query.answer('')
-    await callback_query.message.answer("Введите запрос для поиска в базе данных:")
-    await state.set_state(Filters.keyword)
-    await state.update_data(context="resume")
 
 # Обработка ввода запроса
 @router.message(Filters.keyword)
@@ -91,12 +66,12 @@ async def process_keyword(message: Message, state: FSMContext):
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="Выдать 10 случайных результатов", callback_data="random_10")],
             [InlineKeyboardButton(text="Посчитать среднюю зарплату", callback_data="average_salary")],
-            [InlineKeyboardButton(text="Запарсить информацию в бд", callback_data="parse_info_db")]
+            [InlineKeyboardButton(text="Добавить новую информацию", callback_data="parse_info_db")]
         ])
 
-        await message.reply(f"Таблица {keyword} найдена\nВсего {total_rows} записей\nВыберите действие:", reply_markup=keyboard)
+        await message.reply(f"{keyword} найдена в базе данных\nВсего {total_rows} записей\nВыберите действие:", reply_markup=keyboard)
     else:
-        await message.reply(f"Таблица {keyword} не найдена, давайте запарсим информацию.")
+        await message.reply(f"{keyword} не найдена в базе данных, давайте добавим информацию")
         await state.set_state(Filters.experience)
         await message.answer("Выберите опыт работы:", reply_markup=kb.inline_experience)
 
@@ -196,10 +171,6 @@ async def process_inline_education(callback_query: CallbackQuery, state: FSMCont
         await callback_query.answer('')
 
 
-
-
-
-
 @router.callback_query(F.data == "education_next")
 async def education_next(callback_query: CallbackQuery, state: FSMContext):
     await state.update_data(education=education_filters)
@@ -234,27 +205,6 @@ async def process_inline_schedule(callback_query: CallbackQuery, state: FSMConte
         await callback_query.message.edit_text(selected_schedule_text, reply_markup=kb.inline_schedule)
         await callback_query.answer('')
 
-# Обработка выбора нижнего предела зарплаты через инлайн-клавиатуру
-@router.callback_query(F.data.startswith("salary_from_"))
-async def process_inline_salary_from(callback_query: CallbackQuery, state: FSMContext):
-    salary_from_map = {
-        "salary_from_25000": 25000,
-        "salary_from_50000": 50000,
-        "salary_from_100000": 100000,
-        "salary_from_any": None
-    }
-    salary_from_value = salary_from_map[callback_query.data]
-    await state.update_data(salary_from=salary_from_value)
-    await state.set_state(Filters.salary_to)
-    data = await state.get_data()
-    context = data.get("context")
-    if context == "vacancies":
-        await state.set_state(Filters.parse_count)
-        await callback_query.message.edit_text("Выберите количество записей для парсинга:", reply_markup=kb.inline_parse_count)
-        await callback_query.answer('')
-    elif context == "resume":
-        await callback_query.message.answer("Выберите верхний предел зарплаты или напишите свой:", reply_markup=kb.inline_salary_to)
-        await callback_query.answer('')
 
 @router.callback_query(F.data.startswith("salary_to_"))
 async def process_inline_salary_to(callback_query: CallbackQuery, state: FSMContext):
@@ -275,181 +225,35 @@ async def process_inline_salary_to(callback_query: CallbackQuery, state: FSMCont
 @router.callback_query(F.data.startswith("parse_"))
 async def parse_vacancies_or_resumes(callback_query: CallbackQuery, state: FSMContext):
     await callback_query.answer() 
-
-    try:
-        count = int(callback_query.data.split('_')[1])
-    except (IndexError, ValueError):
-        await callback_query.message.reply("Ошибка: некорректное значение для количества записей.")
-        return
-
+    count = int(callback_query.data.split('_')[1])
     await state.update_data(parse_count=count)
 
     data = await state.get_data()
     keyword = data.get('keyword')
     context = data.get("context")
     alt_keyword = data.get('alt_keyword')
-
+    salary_from = data.get('salary_from')
+    salary_to = data.get('salary_to')
     await callback_query.message.reply("Начинаем парсить информацию...")
 
     if context == "vacancies":
-        await perform_parsing_vacancies(callback_query.message, state, keyword, count, alt_keyword)
+        await vac.perform_parsing_vacancies(callback_query.message, state, keyword, count, alt_keyword, salary_from, education_filters, schedule_filters, experience_filters)
     elif context == "resume":
-        await perform_parsing_resumes(callback_query.message, state, keyword, count, alt_keyword)
-
-    await callback_query.message.reply("Парсинг завершен. Хотите вернуться к началу?")
-
-async def perform_parsing_vacancies(message: Message, state: FSMContext, keyword: str, count: int, alt_keyword: str):
-    data = await state.get_data()
-    offset = data.get('offset', 0)
-    conn = sqlite3.connect('bd_vacancy/vacancy.db')
-    cursor = conn.cursor()   
-    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword}
-    (id INTEGER PRIMARY KEY, title TEXT, company TEXT, salary TEXT, experience TEXT, busyness TEXT, education TEXT, link TEXT)''')
-
-    cursor.execute(f'SELECT link FROM {keyword}')
-    # Получаем все строки результата
-    rows = cursor.fetchall()
-    # Преобразуем строки в список ссылок
-    shown_links = [row[0] for row in rows]
-
-    logging.info(f"Полученные фильтры: keyword={keyword}, education_filters={education_filters}, schedule_filters={schedule_filters}, offset={offset}")
-
-    results_count = 0
-
-    for link in get_vacancy_links(alt_keyword, education_filters, data.get('salary'), schedule_filters, offset):
-        if results_count >= count:
-            break
-
-        if link in shown_links:
-            logging.info(f"Пропуск существующей ссылки: {link}")
-            continue  # Пропустить уже показанные ссылки
-
-        logging.info(f"Парсим вакансию по ссылке: {link}")
-
-        vacancy = get_vacancy(link, education_filters)
-        if vacancy:
-            formatted_vacancy = (
-                f"Профессия: {vacancy['title']}\n"
-                f"Название компании: {vacancy['name']}\n"
-                f"Тэги: {', '.join(vacancy['tags'])}\n"
-                f"Зарплата: {vacancy['salary']}\n"
-                f"Опыт работы: {vacancy['experience']}\n"
-                f"Занятость: {vacancy['busyness']}\n"
-                f"Образование: {vacancy['education']}\n"
-                f"Ссылка: {vacancy['link']}"
-            )
-            await message.reply(formatted_vacancy)
-
-            insert_vacancy(cursor, keyword, vacancy)
-            conn.commit()
-
-            results_count += 1
-
-    conn.close()
+        await res.perform_parsing_resumes(callback_query.message, state, keyword, count, alt_keyword, salary_from, salary_to, education_filters,schedule_filters,experience_filters)
 
 
-    if results_count > 0:
-        keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Далее", callback_data="next_page_vacancies")],
-            [InlineKeyboardButton(text="Назад", callback_data="restart")]
-        ])
-        await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
-    else:
-        await message.reply("Больше вакансий не найдено.")
-
-
-async def perform_parsing_resumes(message: Message, state: FSMContext, keyword: str, count: int, alt_keyword: str):
-    keyword = keyword.lower()
-    print(alt_keyword)
-    data = await state.get_data()
-    offset = data.get('offset', 0)
-    conn = sqlite3.connect('bd_resume/resume.db')
-    cursor = conn.cursor()
-    
-    # Создание таблицы если она не существует
-    cursor.execute(f'''CREATE TABLE IF NOT EXISTS {keyword} (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT,
-        sex TEXT,
-        age TEXT,
-        salary TEXT,
-        experience TEXT,
-        tags TEXT,
-        employment TEXT,
-        schedule TEXT,
-        link TEXT
-    )''')
-    logging.info(f"Table {keyword} is created or already exists.")
-    
-    cursor.execute(f'SELECT link FROM {keyword}')
-    rows = cursor.fetchall()
-    shown_links = [row[0] for row in rows]
-
-    logging.info(f"Filters: keyword={keyword}, education_filters={education_filters}, schedule_filters={schedule_filters}, experience_filters={experience_filters}, salary_from={data.get('salary_from')}, salary_to={data.get('salary_to')}, offset={offset}")
-
-    results_count = 0
-
-    for link in get_resume_links(alt_keyword, experience_filters, schedule_filters, education_filters, data.get('salary_from'), data.get('salary_to')):
-        if results_count >= count:
-            break
-
-        if link in shown_links:
-            logging.info(f"Пропуск существующей ссылки: {link}")
-            continue
-
-        logging.info(f"Парсинг резюме: {link}")
-
-        resume = get_resume(link)
-        if resume:
-            formatted_resume = (
-                f"Имя: {resume['name']}\n"
-                f"Пол: {resume['sex']}\n"
-                f"Возраст: {resume['age']}\n"
-                f"Зарплата: {resume['salary']}\n"
-                f"Опыт работы: {resume['experience']}\n"
-                f"Тэги: {', '.join(resume['tags'])}\n"
-                f"Занятость: {', '.join(resume['employment_list'])}\n"
-                f"График работы: {', '.join(resume['schedule_list'])}\n"
-                f"Ссылка: {resume['link']}"
-            )
-            await message.reply(formatted_resume)
-
-            if insert_resume(cursor, keyword, resume):
-                conn.commit()
-                results_count += 1
-            else:
-                logging.info(f"Не удалось вставить резюме: {resume['link']}")
-
-    conn.close()
-
-    if results_count > 0:
-        keyboard = InlineKeyboardMarkup(inline_keyboard=[
-            [InlineKeyboardButton(text="Далее", callback_data="next_page_resumes")],
-            [InlineKeyboardButton(text="Назад", callback_data="restart")]
-        ])
-        await message.reply("Хотите продолжить просмотр?", reply_markup=keyboard)
-    else:
-        await message.reply("Больше резюме не найдено.")
-  
-
-@router.callback_query(F.data == "next_page_vacancies")
-async def handle_next_page_vacancies(callback_query: CallbackQuery, state: FSMContext):
-    await callback_query.answer()  
-    data = await state.get_data()
-    keyword = data.get('keyword')
-    count = data.get('parse_count')
-    alt_keyword = keyword.replace('_',' ')
-    await perform_parsing_vacancies(callback_query.message, state, keyword, count, alt_keyword)
-
-@router.callback_query(F.data == "next_page_resumes")
+@router.callback_query(F.data == "next_page")
 async def handle_next_page_resumes(callback_query: CallbackQuery, state: FSMContext):
     await callback_query.answer()  
     data = await state.get_data()
     keyword = data.get('keyword')
+    context = data.get('context')
+    salary_from = data.get('salary_from')
+    salary_to = data.get('salary_to')
     count = data.get('parse_count')
     alt_keyword = keyword.replace('_',' ')
-    await perform_parsing_resumes(callback_query.message, state, keyword, count, alt_keyword)
-
+    if context == 'resume': await res.perform_parsing_resumes(callback_query.message, state, keyword, count, alt_keyword, salary_from, salary_to, education_filters,schedule_filters,experience_filters)
+    else: await vac.perform_parsing_vacancies(callback_query.message, state, keyword, count, alt_keyword, salary_from, education_filters, schedule_filters, experience_filters)
 
 @router.callback_query(F.data == "restart")
 async def handle_restart(callback_query: CallbackQuery, state: FSMContext):
@@ -468,10 +272,32 @@ async def handle_random_10(callback_query: CallbackQuery, state: FSMContext):
     cursor.execute(f"SELECT * FROM {keyword} ORDER BY RANDOM() LIMIT 10;")
     results = cursor.fetchall()
 
-    for result in results:
-        formatted_result = f"Результат: {result}"
-        await callback_query.message.reply(formatted_result)
-
+    if context == "vacancies":
+        for result in results:
+            formatted_vacancy = (
+                f"Профессия: {result[1]}\n" 
+                f"Название компании: {result[2]}\n"  
+                f"Зарплата: {result[3]}\n"
+                f"Опыт работы: {result[4]}\n"
+                f"Занятость: {result[5]}\n"
+                f"Образование: {result[6]}\n"
+                f"Ссылка: {result[7]}"
+            )
+            await callback_query.message.reply(formatted_vacancy)
+    else:
+        for result in results:
+            formatted_resume = (
+                f"Имя: {result[1]}\n"  
+                f"Пол: {result[2]}\n"  
+                f"Возраст: {result[3]}\n" 
+                f"Зарплата: {result[4]}\n"
+                f"Опыт работы: {result[5]}\n"
+                f"Тэги: {result[6]}\n"
+                f"Занятость: {result[7]}\n"
+                f"График работы: {result[8]}\n"
+                f"Ссылка: {result[9]}"
+            )
+            await callback_query.message.reply(formatted_resume)
     conn.close()
     await callback_query.answer('')
 

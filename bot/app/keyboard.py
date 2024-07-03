@@ -11,13 +11,13 @@ inline_education_resume = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
     [InlineKeyboardButton(text="Доктор наук", callback_data="education_doctor")],
     [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified")],
-    [InlineKeyboardButton(text="Далее", callback_data="education_next")]
+    [InlineKeyboardButton(text="Перейти к следующему фильтру", callback_data="education_next")]
 ])
 inline_education_vacancy = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Среднее профессиональное", callback_data="education_special_secondary")],
     [InlineKeyboardButton(text="Высшее", callback_data="education_higher")],
     [InlineKeyboardButton(text="Не требуется или не указано", callback_data="education_not_required_or_not_specified")],
-    [InlineKeyboardButton(text="Далее", callback_data="education_next")]
+    [InlineKeyboardButton(text="Перейти к следующему фильтру", callback_data="education_next")]
 ])
 
 # Inline клавиатура для выбора зарплаты (нижний предел)
@@ -43,7 +43,7 @@ inline_schedule = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Гибкий график", callback_data="schedule_flexible")],
     [InlineKeyboardButton(text="Сменный график", callback_data="schedule_shift")],
     [InlineKeyboardButton(text="Вахтовая работа", callback_data="schedule_flyInFlyOut")],
-    [InlineKeyboardButton(text="Далее", callback_data="schedule_next")]
+    [InlineKeyboardButton(text="Перейти к следующему фильтру", callback_data="schedule_next")]
 ])
 
 # Inline клавиатура для выбора опыта работы
@@ -52,7 +52,7 @@ inline_experience = InlineKeyboardMarkup(inline_keyboard=[
     [InlineKeyboardButton(text="Больше 3, но меньше 6 лет", callback_data="experience_between3And6")],
     [InlineKeyboardButton(text="Нет опыта", callback_data="experience_noExperience")],
     [InlineKeyboardButton(text="Больше года, меньше 3 лет", callback_data="experience_between1And3")],
-    [InlineKeyboardButton(text="Далее", callback_data="experience_next")]
+    [InlineKeyboardButton(text="Перейти к следующему фильтру", callback_data="experience_next")]
 ])
 
 # Inline клавиатура для выбора количества записей для парсинга

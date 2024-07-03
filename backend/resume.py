@@ -34,7 +34,7 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
         params['salary_to'] = salary_to
 
     # Если оба значения зарплаты указаны то добавить параметр only_with_salary
-    if salary_from is not None and salary_to is not None:
+    if salary_from is not None or salary_to is not None:
         params['label'] = 'only_with_salary'
 
     # Добавление фильтров опыта, расписания и образования, если они указаны
