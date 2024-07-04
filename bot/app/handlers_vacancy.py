@@ -32,7 +32,7 @@ async def perform_parsing_vacancies(message: Message, state: FSMContext, keyword
     # Преобразуем строки в список ссылок
     shown_links = [row[0] for row in rows]
 
-    logging.info(f"Полученные фильтры: keyword={keyword}, education_filters={schedule_filters}, schedule_filters={education_filters}, experience_filters={experience_filters}, salary_from={salary_from}, count={count}")
+    logging.info(f"Полученные фильтры: keyword={keyword}, education_filters={education_filters}, schedule_filters={schedule_filters}, experience_filters={experience_filters}, salary_from={salary_from}, count={count}")
 
     results_count = 0
     for link in get_vacancy_links(alt_keyword, education_filters, salary_from, schedule_filters, experience_filters):

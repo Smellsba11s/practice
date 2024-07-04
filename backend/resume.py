@@ -1,15 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 import fake_useragent
-import json
 import logging
-import re
 import time
 from urllib.parse import urlencode, urlunparse, urlparse
 import sqlite3
 
 
-from urllib.parse import urlencode, urlunparse, urlparse
 
 def get_links(keyword, experience_filters=None, schedule_filters=None, education_filters=None, salary_from=None, salary_to=None):
     base_url = 'https://hh.ru/search/resume'
@@ -39,14 +36,11 @@ def get_links(keyword, experience_filters=None, schedule_filters=None, education
 
     # Добавление фильтров опыта, расписания и образования, если они указаны
     if experience_filters:
-        for exp in experience_filters:
-            params[f'experience'] = exp
+        params[f'experience'] = experience_filters
     if schedule_filters:
-        for sched in schedule_filters:
-            params[f'schedule'] = sched
+        params[f'schedule'] = schedule_filters
     if education_filters:
-        for edu in education_filters:
-            params[f'education_level'] = edu
+        params[f'education_level'] = education_filters
 
     # Создание URL с добавлением ключевых слов в конец
     params['text'] = keyword

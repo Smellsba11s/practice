@@ -1,42 +1,46 @@
 import requests
 from bs4 import BeautifulSoup
 import fake_useragent
+import time
 import sqlite3
 import time
-
+from urllib.parse import urlencode, urlunparse, urlparse
 def get_links(keyword, education_filters=None, salary = None, schedule_filters=None, experience=None, offset=0):
     base_url = 'https://hh.ru/search/vacancy?'
 
-    params = [
-        'area=1',
-        'hhtmFrom=resume_search_result',
-        'hhtmFromLabel=vacancy_search_line',
-        'search_field=name',
-        'search_field=company_name',
-        'search_field=description',
-        'enable_snippets=false',
-        f'text={keyword}'
-    ]
-
+    params = {
+        'area': '1',
+        'hhtmFrom':'resume_search_result',
+        'hhtmFromLabel':'vacancy_search_line',
+        'search_field':'name',
+        'search_field':'company_name',
+        'search_field':'description',
+        'enable_snippets':'false',
+    }
     if education_filters:
-        params.extend(f'education={edu}' for edu in education_filters)
+        params[f'education'] = education_filters
 
-    if salary:
-        params.append(f'salary={salary}')
-        params.append('only_with_salary=true')
-    elif salary is not None:
-        params.append('only_with_salary=false')
+    if salary is not None:
+        params['salary'] = salary
+        params['only_with_salary'] = 'true'
 
     if schedule_filters:
-        params.extend(f'schedule={schedule}' for schedule in schedule_filters)
-    
-    if experience:
-        experience = str(experience).replace("['",'').replace("']",'')
-        params.append(f'experience={experience}')
+        params[f'schedule'] = schedule_filters
 
-    url = base_url + '&'.join(params)
-    print(url)
+    if experience:
+        for exp in experience:
+            params[f'experience'] = exp
+    
+    params['text'] = keyword
+    url_parts = list(urlparse(base_url))
+    query = urlencode(params, doseq=True)
+    url_parts[4] = query
+
+    url = urlunparse(url_parts)
+
     user_agent = fake_useragent.UserAgent()
+
+    print(url)
 
     try:
         response = requests.get(url, headers={'user-agent': user_agent.random})
