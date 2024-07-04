@@ -1,5 +1,3 @@
-### Practice project
-```markdown
 # Репозиторий для Практики
 
 Добро пожаловать в мой репозиторий для практики! Этот репозиторий содержит различные упражнения,  
@@ -32,10 +30,13 @@ project/
 │ ├── config.py
 │ ├── run.py
 │ ├── app/
+│ │ ├── Class.py
 │ │ ├── handlers.py
-│ │ ├── bd_resume/(тут находится бд)
-│ │ ├── bd_vacancy/(тут находится бд)
+│ │ ├── handlers_resume.py
+│ │ ├── handlers_vacancy.py
 │ │ ├── keyboard.py
+│ ├── bd_resume/(тут находится бд)
+│ ├── bd_vacancy/(тут находится бд)
 │ ├── requirements.txt
 │ └── Dockerfile
 │
