@@ -49,7 +49,7 @@ project/
 
 - Python
 - Docker
-- Telegram API
+- Aiogram 3.4.0
 
 ## Установка
 
